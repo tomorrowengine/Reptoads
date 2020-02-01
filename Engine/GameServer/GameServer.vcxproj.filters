@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="source\model\GameLogic.cpp" />
+    <ClCompile Include="source\scripting\LuaBindingFunc.cpp" />
+    <ClCompile Include="source\utils\CMDInput.cpp" />
+    <ClCompile Include="test\source\LuaScriptTester.cpp" />
+    <ClCompile Include="source\model\AISystem.cpp" />
+    <ClCompile Include="test\source\memTest.cpp" />
+    <ClCompile Include="source\gameplay\MatchHelper.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\GameServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\gameplay\DataStructs.h" />
+    <ClInclude Include="include\model\GameLogic.h" />
+    <ClInclude Include="include\scripting\LuaBindingFunc.h" />
+    <ClInclude Include="include\RTSARG.h" />
+    <ClInclude Include="include\utils\CMDInput.h" />
+    <ClInclude Include="include\model\AISystem.h" />
+    <ClInclude Include="include\gameplay\MatchHelper.h" />
+    <ClInclude Include="include\GameServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ServerDebug.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="serverconfig.xml" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,519 @@
+{
+    "name": "LobbyRoom",
+    "elements": [
+        {
+            "name": "Lobby_Room",
+            "tag": "LobbyRoom",
+            "script": "",
+            "position": {
+                "x": 731,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1084,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_Background.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Demo_SelectDeck1",
+                    "tag": "Deck1_Box",
+                    "script": "",
+                    "position": {
+                        "x": 205,
+                        "y": 322.8,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 322,
+                        "height": 475
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "DeckSelect1-Hovered.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "id": 0,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "DeckSelect1.png"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "DeckSelect1-Hovered.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Demo_SelectDeck2",
+                    "tag": "Deck2_Box",
+                    "script": "",
+                    "position": {
+                        "x": 560,
+                        "y": 322,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 322,
+                        "height": 475
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "DeckSelect2-Hovered.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "select_lobby_deck",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "DeckSelect2.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "DeckSelect2-Hovered.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Cancel_Lobby_Button",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 376.4,
+                        "y": 76.6,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 306,
+                        "height": 94
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "DeckSelection_Cancel.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "cancel_lobby",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "DeckSelection_Cancel-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "DeckSelection_Cancel.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "ShowNextDecksButton",
+                    "tag": "NextDecksButton",
+                    "script": "",
+                    "position": {
+                        "x": 890,
+                        "y": 512,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 120,
+                        "height": 77
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_ButtonRight.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "show_nextdecks",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRight-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRight.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "ShowPreviousDecksButton",
+                    "tag": "PreviousDecksButton",
+                    "script": "",
+                    "position": {
+                        "x": 70,
+                        "y": 512,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 119,
+                        "height": 75
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_ButtonLeft.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "show_previousdecks",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonLeft-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonLeft.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Deck-sign",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1118,
+                "y": 920,
+                "depth": 0
+            },
+            "size": {
+                "width": 319,
+                "height": 65
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "DeckSelection-Sign.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "WaitingForPlayerFrame",
+            "tag": "WaitingForPlayerBox",
+            "script": "",
+            "position": {
+                "x": 933.4,
+                "y": 351.4,
+                "depth": 0
+            },
+            "size": {
+                "width": 700,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Transparent.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "WaitingForPlayerFrameText",
+                    "tag": "WaitingForPlayerText",
+                    "script": "",
+                    "position": {
+                        "x": 79.8,
+                        "y": -38.5,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 36,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                },
+                {
+                    "name": "PlayerWaiting1",
+                    "tag": "PlayerWaiting1Text",
+                    "script": "",
+                    "position": {
+                        "x": -63.5,
+                        "y": 168.3,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 26,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                },
+                {
+                    "name": "PlayerWaiting2",
+                    "tag": "PlayerWaiting2Text",
+                    "script": "",
+                    "position": {
+                        "x": 228.9,
+                        "y": 166.6,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 26,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Player1Status",
+                    "tag": "Player1StatusText",
+                    "script": "",
+                    "position": {
+                        "x": -66.7,
+                        "y": 78.6,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Player2Status",
+                    "tag": "Player2StatusText",
+                    "script": "",
+                    "position": {
+                        "x": 233.4,
+                        "y": 78.5,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "DeckName1",
+            "tag": "DeckName1",
+            "script": "",
+            "position": {
+                "x": 853.6,
+                "y": 45.1,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIText",
+            "typable_data": {
+                "text": "Deck name 1",
+                "horizontal_alignment": 1,
+                "vertical_alignment": 1,
+                "font_path": "Acme",
+                "font_size": 32,
+                "interactable": false,
+                "color": {
+                    "r": 0.00392156862745098,
+                    "g": 0.00392156862745098,
+                    "b": 0.00392156862745098,
+                    "a": 1
+                }
+            },
+            "children": []
+        },
+        {
+            "name": "DeckName2",
+            "tag": "DeckName2",
+            "script": "",
+            "position": {
+                "x": 1203.4,
+                "y": 44.9,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIText",
+            "typable_data": {
+                "text": "Deck name 2",
+                "horizontal_alignment": 1,
+                "vertical_alignment": 1,
+                "font_path": "Acme",
+                "font_size": 32,
+                "interactable": false,
+                "color": {
+                    "r": 0.00392156862745098,
+                    "g": 0.00392156862745098,
+                    "b": 0.00392156862745098,
+                    "a": 1
+                }
+            },
+            "children": []
+        }
+    ]
+}

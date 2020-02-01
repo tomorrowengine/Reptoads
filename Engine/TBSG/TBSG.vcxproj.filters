@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ClientApplication.cpp" />
+    <ClCompile Include="src\EffectChangeHandler.cpp" />
+    <ClCompile Include="src\GameClient.cpp" />
+    <ClCompile Include="src\GameDatabase.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\gameplay\WaypointSystem.cpp" />
+    <ClCompile Include="src\LobbyClient.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SceneHandler.cpp" />
+    <ClCompile Include="src\UserInterface.cpp" />
+    <ClCompile Include="src\utils\EncryptUtils.cpp" />
+    <ClCompile Include="src\utils\GameDataLoader.cpp" />
+    <ClCompile Include="src\user_new.cpp" />
+    <ClCompile Include="src\user_malloc.cpp" />
+    <ClCompile Include="src\utils\LoginHandler.cpp" />
+    <ClCompile Include="src\ui\LobbyUI.cpp" />
+    <ClCompile Include="src\utils\RegsiterHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ClientApplication.h" />
+    <ClInclude Include="include\DataStructs.h" />
+    <ClInclude Include="include\EffectChangeHandler.h" />
+    <ClInclude Include="include\GameClient.h" />
+    <ClInclude Include="include\GameController.h" />
+    <ClInclude Include="include\GameDatabase.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\gameplay\DataStructs.h" />
+    <ClInclude Include="include\gameplay\WaypointSystem.h" />
+    <ClInclude Include="include\json.hpp" />
+    <ClInclude Include="include\LobbyClient.h" />
+    <ClInclude Include="include\model\GameDatabase.h" />
+    <ClInclude Include="include\model\GameLogic.h" />
+    <ClInclude Include="include\model\SceneModel.h" />
+    <ClInclude Include="include\model\UILogic.h" />
+    <ClInclude Include="include\SceneHandler.h" />
+    <ClInclude Include="include\scripting\LuaGameDataBinding.h" />
+    <ClInclude Include="include\scripting\LuaUIBinding.h" />
+    <ClInclude Include="include\stb_image.h" />
+    <ClInclude Include="include\stb_image_write.h" />
+    <ClInclude Include="include\tiny_gltf.h" />
+    <ClInclude Include="include\UserInterface.h" />
+    <ClInclude Include="include\utils\EncryptUtils.h" />
+    <ClInclude Include="include\utils\EventQueues.h" />
+    <ClInclude Include="include\utils\GameDataLoader.h" />
+    <ClInclude Include="include\ui\LobbyUI.h" />
+    <ClInclude Include="include\utils\LoginHandler.h" />
+    <ClInclude Include="include\utils\UIInteractionEvent.h" />
+    <ClInclude Include="include\utils\RegisterHandler.h" />
+    <ClInclude Include="include\utils\UIInteraction.h" />
+    <ClInclude Include="include\utils\GameTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TBSG.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="IGAD_Logo.ico" />
+    <Image Include="icon_qPB_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TBSG.APS" />
+  </ItemGroup>
+</Project>

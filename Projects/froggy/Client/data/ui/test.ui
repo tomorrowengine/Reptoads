@@ -1,0 +1,26 @@
+{
+    "name": "test",
+    "elements": [
+        {
+            "name": "test",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 960,
+                "y": 540
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "AlKharidWarrior.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

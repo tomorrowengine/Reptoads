@@ -1,0 +1,318 @@
+{
+    "name": "MainMenu",
+    "elements": [
+        {
+            "name": "BackGround",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-Background.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "MainMenu-PlayButton",
+            "tag": "MainMenuPlayButton",
+            "script": "",
+            "position": {
+                "x": 150.4,
+                "y": 854.2,
+                "depth": 0
+            },
+            "size": {
+                "width": 351,
+                "height": 171
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-PlayButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "open_lobbysearch",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "MainMenu-PlayButton-Hovered.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "MainMenu-PlayButton.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "  MainMenu-QuitButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 151.7,
+                "y": 48.4,
+                "depth": 0
+            },
+            "size": {
+                "width": 361,
+                "height": 170
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-QuitButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "unloadUI",
+                        "data": "MainMenu.ui",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "QuitApplication",
+                        "data": "",
+                        "id": 1
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "MainMenu-QuitButton-Hovered.png"
+                    },
+                    {
+                        "id": 4,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "MainMenu-QuitButton.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "MainMenu-CollectionButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 118.5,
+                "y": 633.5,
+                "depth": 0
+            },
+            "size": {
+                "width": 403,
+                "height": 211
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-CollectionButton-WIP.png",
+                "interactable": true,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "MainMenu-WIPButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 120.8,
+                "y": 243.8,
+                "depth": 0
+            },
+            "size": {
+                "width": 412,
+                "height": 375
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-WIPButtons.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "MainMenu-RopesBase",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 190,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 285,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-RopesBase.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "CreditsButton",
+            "tag": "MainMenuCreditsButton",
+            "script": "",
+            "position": {
+                "x": 1619.2,
+                "y": 1.7,
+                "depth": 0
+            },
+            "size": {
+                "width": 300,
+                "height": 100
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MainMenu-CreditsButton-.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "MainMenu-CreditsButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "MainMenu-CreditsButton-.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnButtonReleased",
+                        "action": "open_credits",
+                        "data": ""
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "LoginName",
+            "tag": "PlayerName",
+            "script": "",
+            "position": {
+                "x": -100,
+                "y": 807,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIText",
+            "typable_data": {
+                "text": "PlayerName",
+                "horizontal_alignment": 1,
+                "vertical_alignment": 1,
+                "font_path": "Acme",
+                "font_size": 32,
+                "interactable": false,
+                "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 255
+                }
+            },
+            "children": []
+        },
+        {
+            "name": "MusicButton",
+            "tag": "MusicButton",
+            "script": "",
+            "position": {
+                "x": 2,
+                "y": 3.5,
+                "depth": 0
+            },
+            "size": {
+                "width": 113,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MusicButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "MusicButton_hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "MusicButton.png"
+                    },
+                                        {
+                        "id": 3,
+                        "type": "OnButtonReleased",
+                        "action": "MusicButton",
+                        "data": ""
+                    }
+                ]
+            },
+            "children": []
+        }
+    ]
+}

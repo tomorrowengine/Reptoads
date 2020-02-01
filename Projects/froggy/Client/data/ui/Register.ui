@@ -1,0 +1,334 @@
+{
+    "name": "Register",
+    "elements": [
+        {
+            "name": "Background",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "RegisterBG.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Email Field BG",
+            "tag": "EmailField",
+            "script": "",
+            "position": {
+                "x": 770,
+                "y": 690.1,
+                "depth": 0
+            },
+            "size": {
+                "width": 380,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "TextBox.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "TextBoxHover.png",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "TextBox.png",
+                        "id": 1
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "Email field",
+                    "tag": "EmailFieldText",
+                    "script": "",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 380,
+                        "height": 80
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Enter your mail....",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "input": {
+                            "validation": "(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+",
+                            "obscure_text": false,
+                            "interactable_tag": "EmailField"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Pasword Field BG",
+            "tag": "PaswordField",
+            "script": "",
+            "position": {
+                "x": 770,
+                "y": 565.8,
+                "depth": 0
+            },
+            "size": {
+                "width": 380,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "TextBox.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "TextBoxHover.png",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "TextBox.png",
+                        "id": 1
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "Pasword field",
+                    "tag": "PasswordFieldText",
+                    "script": "",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 380,
+                        "height": 80
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Enter your pasword...",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "input": {
+                            "validation": null,
+                            "obscure_text": true,
+                            "interactable_tag": "PaswordField"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Register",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 806.5,
+                "y": 403.3,
+                "depth": 0
+            },
+            "size": {
+                "width": 307,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "RegisterButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "show_eula",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "RegisterButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "RegisterButton.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "back",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 806.5,
+                "y": 274.7,
+                "depth": 0
+            },
+            "size": {
+                "width": 307,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Cancel_Button.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "register_back_pressed",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "Cancel_Button-Hovered.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "Cancel_Button.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "UserName",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 770,
+                "y": 814.4,
+                "depth": 0
+            },
+            "size": {
+                "width": 380,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "TextBox.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "TextBoxHover.png",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "TextBox.png",
+                        "id": 1
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "UserNameField",
+                    "tag": "UserNameTextField",
+                    "script": "",
+                    "position": {
+                        "x": 0,
+                        "y": 0,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 380,
+                        "height": 80
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Your Username...",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "input": {
+                            "validation": null,
+                            "obscure_text": false,
+                            "interactable_tag": "UserNameField"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

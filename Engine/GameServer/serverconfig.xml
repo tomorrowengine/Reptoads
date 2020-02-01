@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cereal>
+	<config>
+		<port>5555</port>
+		<max_connections>64</max_connections>
+	</config>
+</cereal>
+

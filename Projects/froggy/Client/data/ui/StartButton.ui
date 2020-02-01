@@ -1,0 +1,44 @@
+{
+    "name": "StartupButton",
+	"elements" : [
+		{
+			"name": "StartupButton",
+
+			"position": {
+				"x" : 660.0,
+				"y" : 100.0
+			},
+			"size": {
+				"width" : 600.0,
+				"height" : 100.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "PressToStart.png",
+				"interactable": false,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "loadUITop",
+						"data": "MainMenu.ui"
+					},
+					{
+						"type": "OnButtonReleased",
+						"action": "unloadUI",
+						"data": "LoadingScreen.ui"
+					},
+					{
+						"type": "OnButtonReleased",
+						"action": "unloadUI",
+						"data": "StartupButton.ui"
+					}
+				]
+			},
+			"children": [
+				
+			]
+		}
+		
+	]
+}

@@ -1,0 +1,74 @@
+{
+    "name": "LoseScreen",
+    "elements": [
+        {
+            "name": "LoseScreenBox",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 610,
+                "y": 450,
+                "depth": 0
+            },
+            "size": {
+                "width": 700,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LoseScreenIcon.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "BackToMenuButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 805.5,
+                "y": 350,
+                "depth": 0
+            },
+            "size": {
+                "width": 309,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BackToMenuButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "back_to_menu",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 4,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 5,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "BackToMenuButton-Hovered.png"
+                    },
+                    {
+                        "id": 6,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "BackToMenuButton.png"
+                    }
+                ]
+            },
+            "children": []
+        }
+    ]
+}

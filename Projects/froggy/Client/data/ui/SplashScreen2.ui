@@ -1,0 +1,49 @@
+{
+    "name": "SplashScreen2",
+    "elements": [
+        {
+            "name": "BlackBackground",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BlackBackground.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "FroggoLogo",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 620.5,
+                "y": 377.5,
+                "depth": 0
+            },
+            "size": {
+                "width": 679,
+                "height": 325
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "FroggoStudioSplashScreen.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

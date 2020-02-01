@@ -1,0 +1,248 @@
+{
+    "name": "Menu",
+	"elements" : [
+		{
+			"name": "Start Button",
+
+			"position": {
+				"x" : 0.0,
+				"y" : 0.0
+			},
+			"size": {
+				"width" : 400.0,
+				"height" : 400.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "simon.jpg",
+				"interactable": true,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "loadUITop",
+						"data": "uitest2.ui"
+					},
+					{
+						"type": "OnButtonReleased",
+						"action": "unloadUI",
+						"data": "uitest.ui"
+					},
+					{
+						"type": "OnFocussed",
+						"action": "setImage",
+						"data": "CaveSlime.png"
+					},
+					{
+						"type": "OnFocusLost",
+						"action": "setImage",
+						"data": "simon.jpg"
+					}
+				]
+			},
+			"children": [
+				{
+					"name": "Start text",
+
+					"position": {
+						"x" : 10.0,
+						"y" : 50.0
+					},
+					"size": {
+						"width" : 400.0,
+						"height" : 100.0
+					},
+					"rotation": 0.0,
+
+					"type": "UIText",
+					"typable_data": {
+						"text": "Start",
+						"font_path": "fonts/Arial.ttf",
+						"font_size": 20,
+						"horizontal_alignment": 1,
+						"vertical_alignment": 1,
+						"color": {
+							"r": 1.0,
+							"g": 1.0,
+							"b": 1.0,
+							"a": 1.0
+						}
+					},
+					"children": [
+					]
+				}
+			]
+		},
+		{
+			"name": "Info panel",
+
+			"position": {
+				"x" : 400.0,
+				"y" : 200.0
+			},
+			"size": {
+				"width" : 400.0,
+				"height" : 400.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "Mona_Lisa.jpg",
+				"interactable": false,
+				"events": [
+						
+				]
+			},
+			"children": [
+				{
+					"name": "Info Text",
+					"events": [
+						
+					],
+
+					"position": {
+						"x" : 10.0,
+						"y" : 50.0
+					},
+					"size": {
+						"width" : 400.0,
+						"height" : 200.0
+					},
+					"rotation": 0.0,
+
+					"type": "UIText",
+					"typable_data": {
+						"text": "Welcome to our game!",
+						"font_path": "fonts/Arial.ttf",
+						"font_size": 14,
+						"horizontal_alignment": 1,
+						"vertical_alignment": 1,
+						"color": {
+							"r": 1.0,
+							"g": 1.0,
+							"b": 1.0,
+							"a": 1.0
+						}
+					},
+					"children": [
+					]
+				},
+				{
+					"name": "Start Button",
+
+					"position": {
+						"x" : 400.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 400.0,
+						"height" : 400.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "simon.jpg",
+						"interactable": true,
+						"events": [
+							{
+								"type": "OnButtonReleased",
+								"action": "loadUITop",
+								"data": "uitest2.ui"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "unloadUI",
+								"data": "uitest.ui"
+							},
+							{
+								"type": "OnFocussed",
+								"action": "setImage",
+								"data": "CaveSlime.png"
+							},
+							{
+								"type": "OnFocusLost",
+								"action": "setImage",
+								"data": "simon.jpg"
+							}
+						]
+					},
+					"children": [
+						{
+							"name": "Start text2",
+
+							"position": {
+								"x" : 0.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 400.0,
+								"height" : 100.0
+							},
+							"rotation": 0.0,
+
+							"type": "UIText",
+							"typable_data": {
+								"text": "Start2",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							]
+						},
+						{
+							"name": "Start Button3",
+
+							"position": {
+								"x" : 0.0,
+								"y" : 400.0
+							},
+							"size": {
+								"width" : 400.0,
+								"height" : 400.0
+							},
+							"rotation": 0.0,
+							"type": "UIImage",
+							"typable_data": {
+								"image": "simon.jpg",
+								"interactable": true,
+								"events": [
+									{
+										"type": "OnButtonReleased",
+										"action": "loadUITop",
+										"data": "uitest2.ui"
+									},
+									{
+										"type": "OnButtonReleased",
+										"action": "unloadUI",
+										"data": "uitest.ui"
+									},
+									{
+										"type": "OnFocussed",
+										"action": "setImage",
+										"data": "CaveSlime.png"
+									},
+									{
+										"type": "OnFocusLost",
+										"action": "setImage",
+										"data": "simon.jpg"
+									}
+								]
+							},
+							"children": [
+								
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,530 @@
+
+
+
+
+
+#ifndef _my_base_h
+#define _my_base_h
+
+#include <my_dir.h>			
+#include <my_sys.h>
+#include <m_string.h>
+#include <errno.h>
+
+#ifndef EOVERFLOW
+#define EOVERFLOW 84
+#endif
+
+#include <my_list.h>
+
+
+
+#define HA_OPEN_ABORT_IF_LOCKED		0U	
+#define HA_OPEN_WAIT_IF_LOCKED		1U
+#define HA_OPEN_IGNORE_IF_LOCKED	2U
+#define HA_OPEN_TMP_TABLE		4U	
+#define HA_OPEN_DELAY_KEY_WRITE		8U	
+#define HA_OPEN_ABORT_IF_CRASHED	16U
+#define HA_OPEN_FOR_REPAIR		32U	
+#define HA_OPEN_FROM_SQL_LAYER          64U
+#define HA_OPEN_MMAP                    128U    
+#define HA_OPEN_COPY			256U    
+
+#define HA_OPEN_INTERNAL_TABLE          512U
+#define HA_OPEN_NO_PSI_CALL             1024U   
+#define HA_OPEN_MERGE_TABLE		2048U
+#define HA_OPEN_FOR_CREATE              4096U
+
+
+#define HA_OPEN_FOR_ALTER		4096U
+
+
+
+
+
+enum ha_rkey_function {
+  HA_READ_KEY_EXACT,              
+  HA_READ_KEY_OR_NEXT,            
+  HA_READ_KEY_OR_PREV,            
+  HA_READ_AFTER_KEY,              
+  HA_READ_BEFORE_KEY,             
+  HA_READ_PREFIX,                 
+  HA_READ_PREFIX_LAST,            
+  HA_READ_PREFIX_LAST_OR_PREV,    
+  HA_READ_MBR_CONTAIN,
+  HA_READ_MBR_INTERSECT,
+  HA_READ_MBR_WITHIN,
+  HA_READ_MBR_DISJOINT,
+  HA_READ_MBR_EQUAL
+};
+
+	
+
+enum ha_key_alg {
+  HA_KEY_ALG_UNDEF=	0,		
+  HA_KEY_ALG_BTREE=	1,		
+  HA_KEY_ALG_RTREE=	2,		
+  HA_KEY_ALG_HASH=	3,		
+  HA_KEY_ALG_FULLTEXT=	4		
+};
+
+         
+
+enum ha_storage_media {
+  HA_SM_DEFAULT=        0,		
+  HA_SM_DISK=           1,		
+  HA_SM_MEMORY=         2		
+};
+
+	
+
+enum ha_extra_function {
+  HA_EXTRA_NORMAL=0,			
+  HA_EXTRA_QUICK=1,			
+  HA_EXTRA_NOT_USED=2,			
+  HA_EXTRA_CACHE=3,			
+  HA_EXTRA_NO_CACHE=4,			
+  HA_EXTRA_NO_READCHECK=5,		
+  HA_EXTRA_READCHECK=6,			
+  HA_EXTRA_KEYREAD=7,			
+  HA_EXTRA_NO_KEYREAD=8,		
+  HA_EXTRA_NO_USER_CHANGE=9,		
+  HA_EXTRA_KEY_CACHE=10,
+  HA_EXTRA_NO_KEY_CACHE=11,
+  HA_EXTRA_WAIT_LOCK=12,		
+  HA_EXTRA_NO_WAIT_LOCK=13,		
+  HA_EXTRA_WRITE_CACHE=14,		
+  HA_EXTRA_FLUSH_CACHE=15,		
+  HA_EXTRA_NO_KEYS=16,			
+  HA_EXTRA_KEYREAD_CHANGE_POS=17,	
+					
+  HA_EXTRA_REMEMBER_POS=18,		
+  HA_EXTRA_RESTORE_POS=19,
+  HA_EXTRA_REINIT_CACHE=20,		
+  HA_EXTRA_FORCE_REOPEN=21,		
+  HA_EXTRA_FLUSH,			
+  HA_EXTRA_NO_ROWS,			
+  HA_EXTRA_RESET_STATE,			
+  HA_EXTRA_IGNORE_DUP_KEY,		
+  HA_EXTRA_NO_IGNORE_DUP_KEY,
+  HA_EXTRA_PREPARE_FOR_DROP,
+  HA_EXTRA_PREPARE_FOR_UPDATE,		
+  HA_EXTRA_PRELOAD_BUFFER_SIZE,         
+  
+  HA_EXTRA_CHANGE_KEY_TO_UNIQUE,
+  HA_EXTRA_CHANGE_KEY_TO_DUP,
+  
+  HA_EXTRA_KEYREAD_PRESERVE_FIELDS,
+  HA_EXTRA_MMAP,
+  
+  HA_EXTRA_IGNORE_NO_KEY,
+  HA_EXTRA_NO_IGNORE_NO_KEY,
+  
+  HA_EXTRA_MARK_AS_LOG_TABLE,
+  
+  HA_EXTRA_WRITE_CAN_REPLACE,
+  HA_EXTRA_WRITE_CANNOT_REPLACE,
+  
+  HA_EXTRA_DELETE_CANNOT_BATCH,
+  HA_EXTRA_UPDATE_CANNOT_BATCH,
+  
+  HA_EXTRA_INSERT_WITH_UPDATE,
+  
+  HA_EXTRA_PREPARE_FOR_RENAME,
+  
+  HA_EXTRA_ADD_CHILDREN_LIST,
+  HA_EXTRA_ATTACH_CHILDREN,
+  HA_EXTRA_IS_ATTACHED_CHILDREN,
+  HA_EXTRA_DETACH_CHILDREN,
+  HA_EXTRA_DETACH_CHILD,
+  
+  HA_EXTRA_PREPARE_FOR_FORCED_CLOSE,
+  
+  HA_EXTRA_PREPARE_FOR_ALTER_TABLE,
+  
+  HA_EXTRA_STARTING_ORDERED_INDEX_SCAN,
+  
+  HA_EXTRA_BEGIN_ALTER_COPY,
+  
+  HA_EXTRA_END_ALTER_COPY,
+  
+  HA_EXTRA_FAKE_START_STMT
+};
+
+
+#define HA_EXTRA_PREPARE_FOR_DELETE HA_EXTRA_PREPARE_FOR_DROP
+
+	
+
+enum ha_panic_function {
+  HA_PANIC_CLOSE,			
+  HA_PANIC_WRITE,			
+  HA_PANIC_READ				
+};
+
+	
+
+enum ha_base_keytype {
+  HA_KEYTYPE_END=0,
+  HA_KEYTYPE_TEXT=1,			
+  HA_KEYTYPE_BINARY=2,			
+  HA_KEYTYPE_SHORT_INT=3,
+  HA_KEYTYPE_LONG_INT=4,
+  HA_KEYTYPE_FLOAT=5,
+  HA_KEYTYPE_DOUBLE=6,
+  HA_KEYTYPE_NUM=7,			
+  HA_KEYTYPE_USHORT_INT=8,
+  HA_KEYTYPE_ULONG_INT=9,
+  HA_KEYTYPE_LONGLONG=10,
+  HA_KEYTYPE_ULONGLONG=11,
+  HA_KEYTYPE_INT24=12,
+  HA_KEYTYPE_UINT24=13,
+  HA_KEYTYPE_INT8=14,
+  
+  HA_KEYTYPE_VARTEXT1=15,               
+  HA_KEYTYPE_VARBINARY1=16,             
+  
+  HA_KEYTYPE_VARTEXT2=17,		
+  HA_KEYTYPE_VARBINARY2=18,		
+  HA_KEYTYPE_BIT=19
+};
+
+#define HA_MAX_KEYTYPE	31		
+
+
+
+#define HA_NOSAME		 1U	
+#define HA_PACK_KEY		 2U	
+#define HA_AUTO_KEY		 16U
+#define HA_BINARY_PACK_KEY	 32U	
+#define HA_FULLTEXT		128U    
+#define HA_UNIQUE_CHECK		256U	
+#define HA_SPATIAL		1024U   
+#define HA_NULL_ARE_EQUAL	2048U	
+#define HA_GENERATED_KEY	8192U	
+
+        
+#define HA_KEYFLAG_MASK (HA_NOSAME | HA_PACK_KEY | HA_AUTO_KEY | \
+                         HA_BINARY_PACK_KEY | HA_FULLTEXT | HA_UNIQUE_CHECK | \
+                         HA_SPATIAL | HA_NULL_ARE_EQUAL | HA_GENERATED_KEY)
+
+
+#define HA_KEY_HAS_PART_KEY_SEG 65536
+
+#define HA_INVISIBLE_KEY 2<<18
+	
+
+#define HA_SPACE_PACK_USED	 4	
+#define HA_VAR_LENGTH_KEY	 8
+#define HA_NULL_PART_KEY	 64
+#define HA_USES_COMMENT          4096
+#define HA_USES_PARSER           16384  
+#define HA_USES_BLOCK_SIZE	 ((uint) 32768)
+#define HA_SORT_ALLOWS_SAME      512    
+
+
+#define HA_EXT_NOSAME            131072
+
+	
+
+#define HA_SPACE_PACK		 1	
+#define HA_PART_KEY_SEG		 4	
+#define HA_VAR_LENGTH_PART	 8
+#define HA_NULL_PART		 16
+#define HA_BLOB_PART		 32
+#define HA_SWAP_KEY		 64
+#define HA_REVERSE_SORT		 128	
+#define HA_NO_SORT               256 
+
+#define HA_BIT_PART		1024
+#define HA_CAN_MEMCMP           2048 
+
+	
+#define HA_OPTION_PACK_RECORD		1U
+#define HA_OPTION_PACK_KEYS		2U
+#define HA_OPTION_COMPRESS_RECORD	4U
+#define HA_OPTION_LONG_BLOB_PTR		8U 
+#define HA_OPTION_TMP_TABLE		16U
+#define HA_OPTION_CHECKSUM		32U
+#define HA_OPTION_DELAY_KEY_WRITE	64U
+#define HA_OPTION_NO_PACK_KEYS		128U  
+
+#define HA_OPTION_RELIES_ON_SQL_LAYER   512U
+#define HA_OPTION_NULL_FIELDS		1024U
+#define HA_OPTION_PAGE_CHECKSUM		2048U
+
+#define HA_OPTION_STATS_PERSISTENT	4096U
+
+#define HA_OPTION_NO_STATS_PERSISTENT	8192U
+
+
+#define HA_OPTION_TEXT_CREATE_OPTIONS_legacy (1U << 14) 
+#define HA_OPTION_TEMP_COMPRESS_RECORD  (1U << 15)      
+#define HA_OPTION_READ_ONLY_DATA        (1U << 16)      
+#define HA_OPTION_NO_CHECKSUM           (1U << 17)
+#define HA_OPTION_NO_DELAY_KEY_WRITE    (1U << 18)
+
+	
+
+#define HA_DONT_TOUCH_DATA	1U	
+#define HA_PACK_RECORD		2U	
+#define HA_CREATE_TMP_TABLE	4U
+#define HA_CREATE_CHECKSUM	8U
+#define HA_CREATE_KEEP_FILES	16U     
+#define HA_CREATE_PAGE_CHECKSUM	32U
+#define HA_CREATE_DELAY_KEY_WRITE 64U
+#define HA_CREATE_RELIES_ON_SQL_LAYER 128U
+#define HA_CREATE_INTERNAL_TABLE 256U
+#define HA_PRESERVE_INSERT_ORDER 512U
+#define HA_CREATE_NO_ROLLBACK    1024U
+
+
+
+#define HA_CREATE_UNIQUE_INDEX_BY_SORT   1U
+
+
+
+
+
+#define HA_STATUS_POS            1U
+
+#define HA_STATUS_NO_LOCK        2U
+
+#define HA_STATUS_TIME           4U
+
+#define HA_STATUS_CONST          8U
+
+#define HA_STATUS_VARIABLE      16U
+
+#define HA_STATUS_ERRKEY        32U
+
+#define HA_STATUS_AUTO          64U
+
+#define HA_STATUS_VARIABLE_EXTRA 128U
+
+#define HA_STATUS_OPEN           256U
+
+
+#define HA_ERR_FIRST            120     
+
+#define HA_ERR_KEY_NOT_FOUND	120	
+#define HA_ERR_FOUND_DUPP_KEY	121	
+#define HA_ERR_INTERNAL_ERROR   122     
+#define HA_ERR_RECORD_CHANGED	123	
+#define HA_ERR_WRONG_INDEX	124	
+#define HA_ERR_CRASHED		126	
+#define HA_ERR_WRONG_IN_RECORD	127	
+#define HA_ERR_OUT_OF_MEM	128	
+#define HA_ERR_NOT_A_TABLE      130     
+#define HA_ERR_WRONG_COMMAND	131	
+#define HA_ERR_OLD_FILE		132	
+#define HA_ERR_NO_ACTIVE_RECORD 133	
+#define HA_ERR_RECORD_DELETED	134	
+#define HA_ERR_RECORD_FILE_FULL 135	
+#define HA_ERR_INDEX_FILE_FULL	136	
+#define HA_ERR_END_OF_FILE	137	
+#define HA_ERR_UNSUPPORTED	138	
+#define HA_ERR_TO_BIG_ROW	139	
+#define HA_WRONG_CREATE_OPTION	140	
+#define HA_ERR_FOUND_DUPP_UNIQUE 141	
+#define HA_ERR_UNKNOWN_CHARSET	 142	
+#define HA_ERR_WRONG_MRG_TABLE_DEF 143  
+#define HA_ERR_CRASHED_ON_REPAIR 144	
+#define HA_ERR_CRASHED_ON_USAGE  145	
+#define HA_ERR_LOCK_WAIT_TIMEOUT 146
+#define HA_ERR_LOCK_TABLE_FULL   147
+#define HA_ERR_READ_ONLY_TRANSACTION 148 
+#define HA_ERR_LOCK_DEADLOCK	 149
+#define HA_ERR_CANNOT_ADD_FOREIGN 150    
+#define HA_ERR_NO_REFERENCED_ROW 151     
+#define HA_ERR_ROW_IS_REFERENCED 152     
+#define HA_ERR_NO_SAVEPOINT	 153     
+#define HA_ERR_NON_UNIQUE_BLOCK_SIZE 154 
+#define HA_ERR_NO_SUCH_TABLE     155  
+#define HA_ERR_TABLE_EXIST       156  
+#define HA_ERR_NO_CONNECTION     157  
+
+#define HA_ERR_NULL_IN_SPATIAL   158
+#define HA_ERR_TABLE_DEF_CHANGED 159  
+
+#define HA_ERR_NO_PARTITION_FOUND 160
+#define HA_ERR_RBR_LOGGING_FAILED 161  
+#define HA_ERR_DROP_INDEX_FK      162  
+
+#define HA_ERR_FOREIGN_DUPLICATE_KEY 163
+
+#define HA_ERR_TABLE_NEEDS_UPGRADE 164
+#define HA_ERR_TABLE_READONLY      165   
+
+#define HA_ERR_AUTOINC_READ_FAILED 166   
+#define HA_ERR_AUTOINC_ERANGE    167     
+#define HA_ERR_GENERIC           168     
+
+#define HA_ERR_RECORD_IS_THE_SAME 169
+#define HA_ERR_LOGGING_IMPOSSIBLE 170    
+#define HA_ERR_CORRUPT_EVENT      171	 
+#define HA_ERR_NEW_FILE	          172	 
+#define HA_ERR_ROWS_EVENT_APPLY   173    
+#define HA_ERR_INITIALIZATION     174    
+#define HA_ERR_FILE_TOO_SHORT	  175	 
+#define HA_ERR_WRONG_CRC	  176	 
+#define HA_ERR_TOO_MANY_CONCURRENT_TRXS 177 
+
+#define HA_ERR_NOT_IN_LOCK_PARTITIONS 178
+#define HA_ERR_INDEX_COL_TOO_LONG 179    
+#define HA_ERR_INDEX_CORRUPT      180    
+#define HA_ERR_UNDO_REC_TOO_BIG   181    
+#define HA_FTS_INVALID_DOCID      182	 
+#define HA_ERR_TABLE_IN_FK_CHECK  183    
+#define HA_ERR_TABLESPACE_EXISTS  184    
+#define HA_ERR_TOO_MANY_FIELDS    185    
+#define HA_ERR_ROW_IN_WRONG_PARTITION 186 
+#define HA_ERR_ROW_NOT_VISIBLE    187
+#define HA_ERR_ABORTED_BY_USER    188
+#define HA_ERR_DISK_FULL          189
+#define HA_ERR_INCOMPATIBLE_DEFINITION 190
+#define HA_ERR_FTS_TOO_MANY_WORDS_IN_PHRASE 191 
+#define HA_ERR_DECRYPTION_FAILED  192 
+#define HA_ERR_FK_DEPTH_EXCEEDED  193 
+#define HA_ERR_TABLESPACE_MISSING 194  
+#define HA_ERR_SEQUENCE_INVALID_DATA 195
+#define HA_ERR_SEQUENCE_RUN_OUT   196
+#define HA_ERR_LAST               196  
+
+
+#define HA_ERR_ERRORS            (HA_ERR_LAST - HA_ERR_FIRST + 1)
+
+
+#define HA_ERR_TABLE_CORRUPT HA_ERR_WRONG_IN_RECORD
+#define HA_ERR_QUERY_INTERRUPTED HA_ERR_ABORTED_BY_USER
+#define HA_ERR_NOT_ALLOWED_COMMAND HA_ERR_WRONG_COMMAND
+
+	
+
+#define HA_NAMELEN 64			
+#define NO_SUCH_KEY (~(uint)0)          
+
+typedef ulong key_part_map;
+#define HA_WHOLE_KEY  (~(key_part_map)0)
+
+	
+
+	
+#define SEARCH_FIND	1U
+#define SEARCH_NO_FIND	2U
+#define SEARCH_SAME	4U
+#define SEARCH_BIGGER	8U
+#define SEARCH_SMALLER	16U
+#define SEARCH_SAVE_BUFF	32U
+#define SEARCH_UPDATE	64U
+#define SEARCH_PREFIX	128U
+#define SEARCH_LAST	256U
+#define MBR_CONTAIN     512U
+#define MBR_INTERSECT   1024U
+#define MBR_WITHIN      2048U
+#define MBR_DISJOINT    4096U
+#define MBR_EQUAL       8192U
+#define MBR_DATA        16384U
+#define SEARCH_NULL_ARE_EQUAL 32768U	
+#define SEARCH_NULL_ARE_NOT_EQUAL 65536U
+
+#define SEARCH_INSERT   (SEARCH_NULL_ARE_NOT_EQUAL*2)
+
+#define SEARCH_PART_KEY (SEARCH_INSERT*2)
+
+#define SEARCH_USER_KEY_HAS_TRANSID (SEARCH_PART_KEY*2)
+
+#define SEARCH_PAGE_KEY_HAS_TRANSID (SEARCH_USER_KEY_HAS_TRANSID*2)
+
+	
+#define QUICK_USED	1U
+#define READ_CACHE_USED	2U
+#define READ_CHECK_USED 4U
+#define KEY_READ_USED	8U
+#define WRITE_CACHE_USED 16U
+#define OPT_NO_ROWS	32U
+
+	
+#define HA_STATE_CHANGED	1U	
+#define HA_STATE_AKTIV		2U	
+#define HA_STATE_WRITTEN	4U	
+#define HA_STATE_DELETED	8U
+#define HA_STATE_NEXT_FOUND	16U	
+#define HA_STATE_PREV_FOUND	32U	
+#define HA_STATE_NO_KEY		64U	
+#define HA_STATE_KEY_CHANGED	128U
+#define HA_STATE_WRITE_AT_END	256U	
+#define HA_STATE_BUFF_SAVED	512U	
+#define HA_STATE_ROW_CHANGED	1024U	
+#define HA_STATE_EXTEND_BLOCK	2048U
+#define HA_STATE_RNEXT_SAME	4096U	
+
+
+enum en_fieldtype {
+  FIELD_LAST=-1,FIELD_NORMAL,FIELD_SKIP_ENDSPACE,FIELD_SKIP_PRESPACE,
+  FIELD_SKIP_ZERO,FIELD_BLOB,FIELD_CONSTANT,FIELD_INTERVALL,FIELD_ZERO,
+  FIELD_VARCHAR,FIELD_CHECK,
+  FIELD_enum_val_count
+};
+
+enum data_file_type {
+  STATIC_RECORD, DYNAMIC_RECORD, COMPRESSED_RECORD, BLOCK_RECORD, NO_RECORD
+};
+
+
+
+#define NO_MIN_RANGE	1U
+#define NO_MAX_RANGE	2U
+#define NEAR_MIN	4U
+#define NEAR_MAX	8U
+#define UNIQUE_RANGE	16U
+#define EQ_RANGE	32U
+#define NULL_RANGE	64U
+#define GEOM_FLAG      128U
+#define SKIP_RANGE     256U
+
+typedef struct st_key_range
+{
+  const uchar *key;
+  uint length;
+  key_part_map keypart_map;
+  enum ha_rkey_function flag;
+} key_range;
+
+typedef void *range_id_t;
+
+typedef struct st_key_multi_range
+{
+  key_range start_key;
+  key_range end_key;
+  range_id_t ptr;                 
+  uint  range_flag;           
+} KEY_MULTI_RANGE;
+
+
+
+#ifdef BIG_TABLES
+#define rows2double(A)	ulonglong2double(A)
+typedef my_off_t	ha_rows;
+#else
+#define rows2double(A)	(double) (A)
+typedef ulong		ha_rows;
+#endif
+
+#define HA_POS_ERROR	(~ (ha_rows) 0)
+#define HA_OFFSET_ERROR	(~ (my_off_t) 0)
+
+#if SIZEOF_OFF_T == 4
+#define MAX_FILE_SIZE	INT_MAX32
+#else
+#define MAX_FILE_SIZE	LONGLONG_MAX
+#endif
+
+#define HA_VARCHAR_PACKLENGTH(field_length) ((field_length) < 256 ? 1 :2)
+
+
+C_MODE_START
+typedef void (* invalidator_by_filename)(const char * filename);
+C_MODE_END
+
+#endif 

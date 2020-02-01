@@ -1,0 +1,93 @@
+{
+    "name": "DeckChoiceScreen",
+    "elements": [
+        {
+            "name": "CardToJoin1",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 754.5,
+                "y": 321,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Card_FirstAid.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "CardToJoin2",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1294.2,
+                "y": 321.2,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Card_Supplies.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "ButtonJoin1",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 749.8,
+                "y": 68.5,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 250
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UIButton.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "ButtonJoin2",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1303.9,
+                "y": 68,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 250
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UIButton.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

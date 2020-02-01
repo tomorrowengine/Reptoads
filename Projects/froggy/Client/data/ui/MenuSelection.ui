@@ -1,0 +1,212 @@
+{
+    "name": "MenuSelection",
+    "elements": [
+        {
+            "name": "Menu_Box",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 200,
+                "y": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Box.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Store_Button",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 200,
+                "y": 400
+            },
+            "size": {
+                "width": 500,
+                "height": 200
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UIButton.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Store_Text",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 0,
+                        "y": -126.9
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Store",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Indie Flower",
+                        "font_size": 36,
+                        "interactable": false,
+                        "color": {
+                            "r": null,
+                            "g": null,
+                            "b": null,
+                            "a": null
+                        }
+                    },
+                    "children": []
+                },
+                {
+                    "name": "StoreNotAvailable_Text",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 4.1,
+                        "y": -169.9
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Not available",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Indie Flower",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": null,
+                            "g": null,
+                            "b": null,
+                            "a": null
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Play_Button",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 200,
+                "y": 800
+            },
+            "size": {
+                "width": 500,
+                "height": 200
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UIButton.png",
+                "interactable": true,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Play_Text",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 4.1,
+                        "y": -148.4
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Play",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Indie Flower",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": null
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Collection_Button",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 200,
+                "y": 600
+            },
+            "size": {
+                "width": 500,
+                "height": 200
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UIButton.png",
+                "interactable": true,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Collection_Text",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 14,
+                        "y": -151
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Collection",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Indie Flower",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": null
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

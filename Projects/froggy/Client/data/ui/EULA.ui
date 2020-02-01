@@ -1,0 +1,288 @@
+{
+    "name": "EULA",
+    "elements": [
+        {
+            "name": "Background",
+            "tag": "background",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "EULA_BG.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Register",
+                    "tag": "accept",
+                    "script": "",
+                    "position": {
+                        "x": 1291.8,
+                        "y": 182.4,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 113,
+                        "height": 95
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "CheckMark-Unchecked.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "eula_accept",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnButtonReleased",
+                                "action": "setImage",
+                                "data": "CheckMark-Checked.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Register",
+                    "tag": "register",
+                    "script": "",
+                    "position": {
+                        "x": 1132.5,
+                        "y": 59,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 307,
+                        "height": 95
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "RegisterButton.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "account_register",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "RegisterButton-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "RegisterButton.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "back",
+                    "tag": "",
+                    "script": "",
+                    "position": {
+                        "x": 482.1,
+                        "y": 59.7,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 307,
+                        "height": 95
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Cancel_Button.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "register_back_pressed",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Cancel_Button.png"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Cancel_Button-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "left",
+                    "tag": "left_btn",
+                    "script": "",
+                    "position": {
+                        "x": 424.2,
+                        "y": 625.4,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 113,
+                        "height": 95
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "ArrowLeftGreen.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "load_left",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "ArrowLeftGreen-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "ArrowLeftGreen.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "right",
+                    "tag": "right_btn",
+                    "script": "",
+                    "position": {
+                        "x": 1385,
+                        "y": 625,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 113,
+                        "height": 95
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "ArrowRightGreen.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "load_right",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "ArrowRightGreen-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "ArrowRightGreen.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "eula_text",
+            "tag": "eula_text",
+            "script": "",
+            "position": {
+                "x": 618.0,
+                "y": 225.0,
+                "depth": 0
+            },
+            "size": {
+                "width": 700,
+                "height": 700
+            },
+            "rotation": 0,
+            "type": "UIText",
+            "typable_data": {
+                "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                "horizontal_alignment": 1,
+                "vertical_alignment": 0,
+                "font_path": "Acme",
+                "font_size": 24,
+                "interactable": false,
+                "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "children": []
+        }
+    ]
+}

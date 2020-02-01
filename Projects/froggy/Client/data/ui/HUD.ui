@@ -1,0 +1,729 @@
+{
+    "name": "HUD",
+	"elements" : [
+		{
+			"name": "ReadyButton",
+
+			"position": {
+				"x" : 1500.0,
+				"y" : 300.0
+			},
+			"size": {
+				"width" : 250.0,
+				"height" : 125.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "UIButton.png",
+				"interactable": true,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "SubmitTurn",
+						"data": ""
+					},
+					{
+                        "type": "OnButtonReleased",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+					{
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "UIButtonHover.png"
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "UIButton.png"
+                    }
+				]
+			},
+			"children": [
+				{
+					"name": "ReadyText",
+
+					"position": {
+						"x" : 0.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 250.0,
+						"height" : 125.0
+					},
+					"rotation": 0.0,
+
+					"type": "UIText",
+					"typable_data": {
+						"text": "Ready",
+						"font_path": "fonts/Arial.ttf",
+						"font_size": 30,
+						"horizontal_alignment": 1,
+						"vertical_alignment": 1,
+						"color": {
+							"r": 1.0,
+							"g": 1.0,
+							"b": 1.0,
+							"a": 1.0
+						}
+					},
+					"children": [
+					]
+				}
+			]
+		},
+		{
+			"name": "CardBox",
+
+			"position": {
+				"x" : 440.0,
+				"y" : 75.0
+			},
+			"size": {
+				"width" : 1000.0,
+				"height" : 250.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "Transparent.png",
+				"interactable": false,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "CardPlayed",
+						"data": ""
+					}
+				]
+			},
+			"children": [
+				
+			]
+		},
+		{
+			"name": "RivalBar",
+
+			"position": {
+				"x" : 800.0,
+				"y" : 1020.0
+			},
+			"size": {
+				"width" : 422.0,
+				"height" : 64.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "StatBar.png",
+				"interactable": false,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "CardPlayed",
+						"data": ""
+					}
+				]
+			},
+			"children": [
+				{
+					"name": "RivalWeapon",
+		
+					"position": {
+						"x" : 45.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "WeaponImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "WeaponText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -30.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 100.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0/0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "RivalAttack",
+		
+					"position": {
+						"x" : 110.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "AttackImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "AttackText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "RivalResource",
+		
+					"position": {
+						"x" : 180.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "ResourceImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "ResourceText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "RivalHealth",
+		
+					"position": {
+						"x" : 255.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "HealthImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "HealthText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "30",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "RivalArmor",
+		
+					"position": {
+						"x" : 325.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "ArmorImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "ArmorText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 0.0,
+									"g": 0.0,
+									"b": 0.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "HeroBar",
+
+			"position": {
+				"x" : 800.0,
+				"y" : 0.0
+			},
+			"size": {
+				"width" : 422.0,
+				"height" : 64.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "StatBarBottom.png",
+				"interactable": false,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "CardPlayed",
+						"data": ""
+					}
+				]
+			},
+			"children": [
+				{
+					"name": "HeroWeapon",
+		
+					"position": {
+						"x" : 45.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "WeaponImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "WeaponText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -30.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 100.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0/0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "HeroAttack",
+		
+					"position": {
+						"x" : 110.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "AttackImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "AttackText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "HeroResource",
+		
+					"position": {
+						"x" : 180.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "ResourceImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "ResourceText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "HeroHealth",
+		
+					"position": {
+						"x" : 255.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "HealthImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "HealthText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "30",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				},
+				{
+					"name": "HeroArmor",
+		
+					"position": {
+						"x" : 325.0,
+						"y" : 0.0
+					},
+					"size": {
+						"width" : 54.0,
+						"height" : 54.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "ArmorImage.png",
+						"interactable": false,
+						"events": [
+						
+						]
+					},
+					"children": [
+						{
+							"name": "ArmorText",
+							"events": [
+								
+							],
+		
+							"position": {
+								"x" : -10.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 75.0,
+								"height" : 50.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "0",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 0.0,
+									"g": 0.0,
+									"b": 0.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

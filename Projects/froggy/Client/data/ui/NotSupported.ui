@@ -1,0 +1,100 @@
+{
+    "name": "NotSupported",
+	"elements" : [
+		{
+			"name": "Background",
+
+			"position": {
+				"x" : 0.0,
+				"y" : 0.0
+			},
+			"size": {
+				"width" : 1920.0,
+				"height" : 1080.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "UIDarkBackground.png",
+				"interactable": true,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "loadUITop",
+						"data": "MainMenu.ui"
+					},
+					{
+						"type": "OnButtonReleased",
+						"action": "unloadUI",
+						"data": "NotSupported.ui"
+					}
+				]
+			},
+			"children": [
+				{
+					"name": "Start Button",
+		
+					"position": {
+						"x" : 710.0,
+						"y" : 340.0
+					},
+					"size": {
+						"width" : 500.0,
+						"height" : 400.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "UIMenuTextBox.png",
+						"interactable": true,
+						"events": [
+							{
+								"type": "OnButtonReleased",
+								"action": "loadUITop",
+								"data": "MainMenu.ui"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "unloadUI",
+								"data": "NotSupported.ui"
+							}
+						]
+					},
+					"children": [
+						{
+							"name": "Text",
+		
+							"position": {
+								"x" : 0.0,
+								"y" : 0.0
+							},
+							"size": {
+								"width" : 500.0,
+								"height" : 400.0
+							},
+							"rotation": 0.0,
+		
+							"type": "UIText",
+							"typable_data": {
+								"text": "This feature is not supported yet!",
+								"font_path": "fonts/Arial.ttf",
+								"font_size": 20,
+								"horizontal_alignment": 1,
+								"vertical_alignment": 1,
+								"color": {
+									"r": 1.0,
+									"g": 1.0,
+									"b": 1.0,
+									"a": 1.0
+								}
+							},
+							"children": [
+							
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

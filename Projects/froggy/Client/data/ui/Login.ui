@@ -1,0 +1,310 @@
+{
+    "name": "Login",
+    "elements": [
+        {
+            "name": "BackGround",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LoginScreenBackground.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Email Field BG",
+            "tag": "EmailField",
+            "script": "",
+            "position": {
+                "x": 1363.4,
+                "y": 820.8,
+                "depth": 0
+            },
+            "size": {
+                "width": 380,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "TextBox.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "TextBoxHover.png",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "TextBox.png",
+                        "id": 1
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "Email field",
+                    "tag": "EmailFieldText",
+                    "script": "",
+                    "position": {
+                        "x": 6.2,
+                        "y": -1.7,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 370,
+                        "height": 80
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Enter your mail....",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "input": {
+                            "validation": "(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+",
+                            "obscure_text": false,
+                            "interactable_tag": "EmailField"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Pasword Field BG",
+            "tag": "PaswordField",
+            "script": "",
+            "position": {
+                "x": 1363,
+                "y": 705,
+                "depth": 0
+            },
+            "size": {
+                "width": 380,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "TextBox.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "TextBoxHover.png",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "TextBox.png",
+                        "id": 1
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "Pasword field",
+                    "tag": "PasswordFieldText",
+                    "script": "",
+                    "position": {
+                        "x": 4.2,
+                        "y": -2.8,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 370,
+                        "height": 80
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Enter your pasword...",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        },
+                        "input": {
+                            "validation": null,
+                            "obscure_text": true,
+                            "interactable_tag": "PaswordField"
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Login",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1402.7,
+                "y": 544.6,
+                "depth": 0
+            },
+            "size": {
+                "width": 309,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LoginButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "login_pressed",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "LoginButton-Hovered.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "LoginButton.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "Register",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1402,
+                "y": 420,
+                "depth": 0
+            },
+            "size": {
+                "width": 309,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "RegisterButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "register_pressed",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "RegisterButton-Hovered.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "RegisterButton.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "QuitButton",
+            "tag": "QuitButtonLogin",
+            "script": "",
+            "position": {
+                "x": 1402,
+                "y": 28.1,
+                "depth": 0
+            },
+            "size": {
+                "width": 309,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Quit_Button.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "QuitApplication",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 4,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "Quit_Button-Hovered.png"
+                    },
+                    {
+                        "id": 5,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "Quit_Button.png"
+                    }
+                ]
+            },
+            "children": []
+        }
+    ]
+}

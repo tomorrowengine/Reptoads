@@ -1,0 +1,16 @@
+{
+  "audioclips": [
+    "MainMenu_Music_V1.mp3",
+    "In-game_BossMusic_V1.mp3",
+    "In-game_Music_V2.mp3",
+
+    "Card_draw-V1.wav",
+    "click.wav",
+    "Monster1_death-V1.wav",
+    "Monster1_utility-V1.wav",
+    "Player1_death-V1.wav",
+    "Player1_utility-V1.wav",
+    "lose_sound-V2.wav",
+    "victory_sound-V1.wav"
+  ]
+}

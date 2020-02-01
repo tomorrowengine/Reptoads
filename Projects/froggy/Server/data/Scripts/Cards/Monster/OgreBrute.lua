@@ -1,0 +1,15 @@
+require('CombatLibrary')
+function OnCardPlay(a_Card)
+    
+    hero = GetHero()
+    Combat(hero,a_Card)
+
+    health = GetCardHealth(a_Card)
+    if (health <= 0) then
+        rival = GetRival()
+        rivalAttack = GetHeroAttack()
+        if(rivalAttack >= 5) then
+            AddHeroAttack(rival,-1)
+        end
+    end
+end

@@ -1,0 +1,71 @@
+{
+    "name": "resolutionTest",
+    "elements": [
+        {
+            "name": "",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 455.4,
+                "y": 278.1,
+                "depth": 0
+            },
+            "size": {
+                "width": 800,
+                "height": 800
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "UI_monster.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 766.1,
+                "y": 2.4,
+                "depth": 0
+            },
+            "size": {
+                "width": 200,
+                "height": 300
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Card_BeltOfPotions.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 923.8,
+                "y": 676,
+                "depth": 0
+            },
+            "size": {
+                "width": 200,
+                "height": 300
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Card_InnerStrike.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

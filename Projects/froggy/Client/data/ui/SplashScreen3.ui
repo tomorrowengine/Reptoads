@@ -1,0 +1,71 @@
+{
+    "name": "SplashScreen3",
+    "elements": [
+        {
+            "name": "Background",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BlackBackground.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "EngineLogo",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Engine_Logo.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "FmodLogo",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 14.4,
+                "y": 13.9,
+                "depth": 0
+            },
+            "size": {
+                "width": 728,
+                "height": 192
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "FMOD Logo White - Black Background.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

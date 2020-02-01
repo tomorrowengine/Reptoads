@@ -1,0 +1,65 @@
+{
+    "name": "Menu",
+	"elements" : [
+		{
+			"name": "Return Button",
+			"position": {
+				"x" : 400.0,
+				"y" : 0.0
+			},
+			"size": {
+				"width" : 400.0,
+				"height" : 400.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "simon.jpg",
+				"interactable": true,
+				"events": [
+					{
+						"type": "OnButtonReleased",
+						"action": "loadUITop",
+						"data": "uitest.ui"
+					},
+					{
+						"type": "OnButtonReleased",
+						"action": "unloadUI",
+						"data": "uitest2.ui"
+					}
+				]
+			},
+			"children": [
+				{
+					"name": "Return text",
+					"position": {
+						"x" : 10.0,
+						"y" : 50.0
+					},
+					"size": {
+						"width" : 400.0,
+						"height" : 400.0
+					},
+					"rotation": 0.0,
+
+					"type": "UIText",
+					"typable_data": {
+						"text": "Return",
+						"font_path": "fonts/Arial.ttf",
+						"font_size": 20,
+						"horizontal_alignment": 1,
+						"vertical_alignment": 1,
+						"color": {
+							"r": 1.0,
+							"g": 1.0,
+							"b": 1.0,
+							"a": 1.0
+						}
+					},
+					"children": [
+					]
+				}
+			]
+		}
+	]
+}

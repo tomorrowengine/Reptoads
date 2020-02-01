@@ -1,0 +1,81 @@
+{
+    "name": "LoadingScreen",
+    "elements": [
+        {
+            "name": "LoadingScreen",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0.7
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LoadingScreenBackground.png",
+                "interactable": true,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "Loading Text",
+                    "tag": "loadingText",
+                    "script": "",
+                    "position": {
+                        "x": -80.2,
+                        "y": -202.6,
+                        "depth": 0.71
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Loading....",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "interactable": false,
+                        "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "LoadingIcon_State1",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1227.3,
+                "y": 12.9,
+                "depth": 0.71
+            },
+            "size": {
+                "width": 683,
+                "height": 512
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LoadingIcon_State1.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

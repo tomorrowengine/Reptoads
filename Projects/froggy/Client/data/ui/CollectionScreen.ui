@@ -1,0 +1,71 @@
+{
+    "name": "CollectionScreen",
+    "elements": [
+        {
+            "name": "LobbyBackground",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 799.8,
+                "y": 114.3,
+                "depth": 0
+            },
+            "size": {
+                "width": 1071,
+                "height": 967
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_Background.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Lobby_ButtonLeft",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 799.4,
+                "y": 508,
+                "depth": 0
+            },
+            "size": {
+                "width": 127,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_ButtonLeft.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Lobby_ButtonRight",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1742.9,
+                "y": 508.7,
+                "depth": 0
+            },
+            "size": {
+                "width": 127,
+                "height": 80
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_ButtonRight.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

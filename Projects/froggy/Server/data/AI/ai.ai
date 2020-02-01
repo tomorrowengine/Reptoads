@@ -1,0 +1,694 @@
+{
+    "active": "Health",
+    "appliesTo": "AI",
+    "func": 3,
+    "values": {
+        "Health": {
+            "active": [
+                3,
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            false,
+                            10
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            true,
+                            20,
+                            6
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            true,
+                            56,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0.1555,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            11.2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0.5,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            0.78,
+                            0.85,
+                            0.7,
+                            0.5,
+                            0.2,
+                            0,
+                            200
+                        ]
+                    }
+                }
+            ]
+        },
+        "Attack": {
+            "active": [
+                2,
+                3
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            20
+                        ]
+                    }
+                }
+            ]
+        },
+        "Armor": {
+            "active": [
+                3,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0.1,
+                            0.2,
+                            0.3,
+                            0.6,
+                            0.8,
+                            1,
+                            4
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "monster": {
+                        "arguments": [
+                            1,
+                            0.95,
+                            0.8,
+                            0.5,
+                            0.2,
+                            0,
+                            20
+                        ]
+                    }
+                }
+            ]
+        },
+        "Costs": {
+            "active": [
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    }
+                }
+            ]
+        },
+        "CardsInHand": {
+            "active": [
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    }
+                }
+            ]
+        },
+        "CardsInDeck": {
+            "active": [
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    }
+                }
+            ]
+        },
+        "WeaponAttack": {
+            "active": [
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    }
+                }
+            ]
+        },
+        "WeaponDurability": {
+            "active": [
+                0,
+                0
+            ],
+            "values": [
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            20
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            false,
+                            10,
+                            2
+                        ]
+                    }
+                },
+                {
+                    "AI": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    },
+                    "rival": {
+                        "arguments": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1,
+                            10
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

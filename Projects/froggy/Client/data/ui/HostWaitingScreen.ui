@@ -1,0 +1,58 @@
+{
+    "name": "HostWaitingScreen",
+    "elements": [
+        {
+            "name": "WaitingBox",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1178.3,
+                "y": 300.7,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Box.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "WaitingBox",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1175.4,
+                "y": 297.6,
+                "depth": 0
+            },
+            "size": {
+                "width": 500,
+                "height": 500
+            },
+            "rotation": 0,
+            "type": "UIText",
+            "typable_data": {
+                "text": "Waiting for players....",
+                "horizontal_alignment": 1,
+                "vertical_alignment": 1,
+                "font_path": "Acme",
+                "font_size": 32,
+                "interactable": false,
+                "color": {
+                    "r": null,
+                    "g": null,
+                    "b": null,
+                    "a": null
+                }
+            },
+            "children": []
+        }
+    ]
+}

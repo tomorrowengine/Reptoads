@@ -1,0 +1,50 @@
+{
+  "project": 1,
+  "production": false,
+  "network": {
+    "address": "127.0.0.1",
+    "port": 5555,
+    "maxconnection": 55
+  },
+  "database": {
+    "host": "",
+    "port": 3306,
+    "username": "",
+    "password": "",
+    "database": ""
+  },
+  "api":
+  {
+	"host": "",
+	"username": "",
+	"password": "",
+	"tokenfile": "access.token"
+  },
+  "assets": {
+    "cards": "",
+    "scripts": "data/Scripts/",
+    "profiles": "data/Profiles",
+    "shaders": "data/Shaders/",
+    "shaders_bin": "data/Shaders/bin/",
+    "textures": "data/Textures/",
+    "textures_bin": "data/Textures/",
+    "models": "data/gltfs/",
+    "ui": "data/ui/",
+    "audio": "data/audio/",
+    "particles": "data/particles/",
+    "maps": "data/maps.json",
+    "aiconfig": "data/AI/ai.json",
+    "balancingdata": "./data/BalancingData/"
+  },
+  "user": {
+    "name": "USER"
+  },
+  "window": {
+    "width": 1280,
+    "height": 720
+  },
+  "engineSubstepping": {
+    "maxsteptime": 0.0333,
+    "maxsteps": 6
+  }
+}

@@ -1,0 +1,109 @@
+{
+    "name": "CreditsScreen",
+    "elements": [
+        {
+            "name": "CredtisBackground",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0.7
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "CreditsScreenBG.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "LicensesButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1605.2,
+                "y": 6.8,
+                "depth": 0.8
+            },
+            "size": {
+                "width": 307,
+                "height": 95
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "LicensesButton.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "LicensesButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "LicensesButton.png"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "BackToMenu",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 11.8,
+                "y": 14.4,
+                "depth": 0.8
+            },
+            "size": {
+                "width": 300,
+                "height": 100
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BackToMenuButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "BackToMenuButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "BackToMenuButton.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnButtonReleased",
+                        "action": "close_credits",
+                        "data": ""
+                    }
+                ]
+            },
+            "children": []
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "name": "SplashScreen1",
+    "elements": [
+        {
+            "name": "BlackBackground",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "depth": 0
+            },
+            "size": {
+                "width": 1920,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BlackBackground.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "BuasLogo",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 511,
+                "y": 287.5,
+                "depth": 0
+            },
+            "size": {
+                "width": 898,
+                "height": 505
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "BUasSplashScreen.jpg",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

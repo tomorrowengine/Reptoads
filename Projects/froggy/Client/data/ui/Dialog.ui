@@ -1,0 +1,77 @@
+{
+    "name": "Dialog",
+    "elements": [
+        {
+            "name": "BackGround",
+            "tag": "DialogBackground",
+            "script": "",
+            "position": {
+                "x": -4.7,
+                "y": 4.7,
+                "depth": 0.81
+            },
+            "size": {
+                "width": 754,
+                "height": 738
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Dialog.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "dialogConfirm",
+                        "data": "",
+                        "id": 0
+                    },
+                    {
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "DialogHover.png",
+                        "id": 1
+                    },
+                    {
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "Dialog.png",
+                        "id": 2
+                    }
+                ]
+            },
+            "children": [
+                {
+                    "name": "Dialog text",
+                    "tag": "DialogText",
+                    "script": "",
+                    "position": {
+                        "x": 125.7,
+                        "y": 228,
+                        "depth": 0.22
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 400
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 32,
+                        "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

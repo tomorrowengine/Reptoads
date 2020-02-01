@@ -1,0 +1,203 @@
+{
+    "name": "PauseScreen",
+    "elements": [
+        {
+            "name": "ResumeButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 742.4,
+                "y": 781.8,
+                "depth": 0.9999
+            },
+            "size": {
+                "width": 438,
+                "height": 167
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "ResumeButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "ResumeButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "ResumeButton.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnButtonReleased",
+                        "action": "resume_game",
+                        "data": ""
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "SettingsButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 752.6,
+                "y": 586.9,
+                "depth": 0.9999
+            },
+            "size": {
+                "width": 422,
+                "height": 170
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "SettingsButton.png",
+                "interactable": false,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "SettingsButton.png"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "SettingsButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "MenuButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 748.2,
+                "y": 396.7,
+                "depth": 0.9999
+            },
+            "size": {
+                "width": 414,
+                "height": 171
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "MenuButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "MenuButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "MenuButton.png"
+                    },
+                    {
+                        "id": 3,
+                        "type": "OnButtonReleased",
+                        "action": "back_to_menu",
+                        "data": ""
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "QuitButton",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 757.9,
+                "y": 198.8,
+                "depth": 0.9999
+            },
+            "size": {
+                "width": 406,
+                "height": 170
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "QuitButton.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "QuitButton.png"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "QuitButton-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    }
+                ]
+            },
+            "children": []
+        },
+        {
+            "name": "PauseScreenChains",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 757,
+                "y": 0,
+                "depth": 0.9999
+            },
+            "size": {
+                "width": 406,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "PauseScreenChains.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        }
+    ]
+}

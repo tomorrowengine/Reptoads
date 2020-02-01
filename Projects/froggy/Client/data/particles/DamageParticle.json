@@ -1,0 +1,92 @@
+{
+    // An example particle system to explain the syntax of the ParticleSystem.
+    // NOTE: The `Default:` comments are to explain the value which will be given when the property is not specified.
+    //       NOT the value which is neccesairily assigned in this example
+
+
+
+    // [Optional] (string) name for the particle.
+    // Default: "" (An empty string)
+    "name": "particleName",
+    // [Optional] (string) the color texture
+    // Default: A Full white texture
+    "diffuseTexture": "Icon_Blooddrop.png",
+    // [Optional] (string) the emissive texture
+    // Default: A Full white texture
+    // "emissiveTextue": "emissive.png",
+
+    // [Optional] (VectorRange) the offset to the center of the emitter
+    // Default: "any" which gives a random direction in a unit sphere(aka will always have a vector length equal to 1)
+    "spawnOffset": {
+        "length": 5
+    },
+    // [Optional] (number) the maximum number of particles that can be active for a single particle emitter
+    // Default: 500
+    "maxAmount": 500,
+    // [Optional] (ValueRange) the maximum duration of this particle emitter. A value of 0 indicates an infinite lifetime.
+    // Default: constant 0
+    "lifetime": {
+        "min": 1,
+        "max": 2
+    },
+    // [Optional] (VectorRange) the initial direction and velocity of spawned particles
+    // Default: "any" which gives a random direction in a unit sphere(aka will always have a vector length equal to 1)
+    "initialVelocity": {
+        //When specifying a VectorRange, you give it two parameters.
+        // 1. The "direction" (a DirectionRange which will output a 1 length vector).
+        // 2. And the "length" (a ValueRange of a value multiplied with the direction).
+
+        // [Optional] (DirectionRange) the normalized(1 vector length) direction vector
+        // Default: "any" which will output a random vector in a sphere.
+        "direction": {
+            // (Vector) these are the minumum values a direction can go in. For example, specify 0 for y here and 1 at max and the initial direction of a particle can never go down.
+            // There are two ways of specifying a vector
+            // 1. The first is to use the "Object approach" where you specify xyz in strings with values attached
+            "min": {
+                "x": 0.1,
+                "y": 1.0,
+                "z": 0.1
+            },
+            // (Vector) of the maximum values a direction can go in.
+            // 2. The second is to use the "Array approach" where you specify three numbers in **Square** brackets []
+            "max": [
+                0.5,
+                2.0,
+                0.5
+            ]
+        },
+        // [Optional] (ValueRange) the length of the vector. Will be multiplied with the direction to form the resulting Vector
+        // Default: 1
+        "length": {
+            "min": 5,
+            "max": 10
+        }
+    },
+    // [Optional] (ValueRange) the initial scale a particle will spawn with.
+    // Default: 1
+    "initialScale": 1, //Note: you can also specify a constant number in a ValueRange
+    // [Optional] (ValueRange) the initial amount of particles spawned when the emitter is initialized.
+    // Default: 10
+    "initialParticleAmount": {
+        "min": 5,
+        "max": 10
+    },
+    // [Optional] (ValueRange) the amount of which the magnitude(vector length) will change over time. **In Seconds**
+    // Default: 0
+    "velocityChangeOverTime": {
+        "min": -2.5,
+        "max": -1.5
+    },
+    // [Optional] (boolean) whether to apply a downwards force of 9.81 units/second*mass (aka gravity) on the particles
+    // Default: true
+    "useGravity": true,
+    // [Optional] (ValueRange) the amount of particles spawned per second while the particle emitter is active.
+    // Default: 0
+    "particleSpawnRate": 10,
+    // [Optional] (ValueRange) the mass each particle will spawn with. This value is used if gravity is applied a a multiplier.
+    // Default: 1
+    "mass": {
+        "min": -4,
+        "max": -10
+    }
+}

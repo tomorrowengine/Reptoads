@@ -1,0 +1,291 @@
+{
+    "name": "LobbySelect",
+    "elements": [
+        {
+            "name": "Lobby_Box",
+            "tag": "LobbyBox",
+            "script": "",
+            "position": {
+                "x": 731.2,
+                "y": 0,
+                "depth": 0.01
+            },
+            "size": {
+                "width": 1084,
+                "height": 1080
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_Background.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": [
+                {
+                    "name": "FoundLobbies_Box",
+                    "tag": "FoundLobbiesBox",
+                    "script": "",
+                    "position": {
+                        "x": 171.8,
+                        "y": 237.2,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 736,
+                        "height": 648
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_Background_Inside.png",
+                        "interactable": false,
+                        "events": []
+                    },
+                    "children": []
+                },
+                {
+                    "name": "ShowNextLobbiesButton",
+                    "tag": "NextLobbiesButton",
+                    "script": "",
+                    "position": {
+                        "x": 890,
+                        "y": 512,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 120,
+                        "height": 77
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_ButtonRight.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "show_nextlobbies",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRight-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRight.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "ShowPreviousLobbiesButton",
+                    "tag": "PreviousLobbiesButton",
+                    "script": "",
+                    "position": {
+                        "x": 70,
+                        "y": 512,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 119,
+                        "height": 75
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_ButtonLeft.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "show_previouslobbies",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonLeft-Hovered.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonLeft.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "Refresh_Button",
+                    "tag": "RefreshLobbyListButton",
+                    "script": "",
+                    "position": {
+                        "x": 927.8,
+                        "y": 233.9,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 116,
+                        "height": 109
+                    },
+                    "rotation": 0,
+                    "type": "UIImage",
+                    "typable_data": {
+                        "image": "Lobby_ButtonRefresh.png",
+                        "interactable": true,
+                        "events": [
+                            {
+                                "type": "OnButtonReleased",
+                                "action": "refresh_lobbies",
+                                "data": "",
+                                "id": 0
+                            },
+                            {
+                                "id": 1,
+                                "type": "OnButtonPressed",
+                                "action": "playSound",
+                                "data": "click.wav"
+                            },
+                            {
+                                "id": 2,
+                                "type": "OnFocusLost",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRefresh.png"
+                            },
+                            {
+                                "id": 3,
+                                "type": "OnFocussed",
+                                "action": "setImage",
+                                "data": "Lobby_ButtonRefresh-Hovered.png"
+                            }
+                        ]
+                    },
+                    "children": []
+                },
+                {
+                    "name": "LobbyStatus_Text",
+                    "tag": "LobbyStatus",
+                    "script": "",
+                    "position": {
+                        "x": 292.2,
+                        "y": 296,
+                        "depth": 0
+                    },
+                    "size": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "rotation": 0,
+                    "type": "UIText",
+                    "typable_data": {
+                        "text": "Fetching available lobbies...",
+                        "horizontal_alignment": 1,
+                        "vertical_alignment": 1,
+                        "font_path": "Acme",
+                        "font_size": 40,
+                        "interactable": false,
+                        "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 1
+                        }
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Lobby-JoinMatchSign",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1118.2,
+                "y": 920.7,
+                "depth": 0
+            },
+            "size": {
+                "width": 319,
+                "height": 65
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_JoinMatch-Sign.png",
+                "interactable": false,
+                "events": []
+            },
+            "children": []
+        },
+        {
+            "name": "Lobby-CreateMatch",
+            "tag": "",
+            "script": "",
+            "position": {
+                "x": 1114.3,
+                "y": 81,
+                "depth": 0
+            },
+            "size": {
+                "width": 306,
+                "height": 94
+            },
+            "rotation": 0,
+            "type": "UIImage",
+            "typable_data": {
+                "image": "Lobby_ButtonCreateMatch.png",
+                "interactable": true,
+                "events": [
+                    {
+                        "id": 0,
+                        "type": "OnButtonPressed",
+                        "action": "playSound",
+                        "data": "click.wav"
+                    },
+                    {
+                        "id": 1,
+                        "type": "OnFocussed",
+                        "action": "setImage",
+                        "data": "Lobby_ButtonCreateMatch-Hovered.png"
+                    },
+                    {
+                        "id": 2,
+                        "type": "OnFocusLost",
+                        "action": "setImage",
+                        "data": "Lobby_ButtonCreateMatch.png"
+                    },
+                    {
+                        "type": "OnButtonReleased",
+                        "action": "create_lobby",
+                        "data": "",
+                        "id": 3
+                    }
+                ]
+            },
+            "children": []
+        }
+    ]
+}

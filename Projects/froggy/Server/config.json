@@ -1,0 +1,50 @@
+{
+  "project": 1,
+  "production": false,
+  "network": {
+    "address": "127.0.0.1",
+    "port": 5555,
+    "maxconnection": 55
+  },
+  "database": {
+    "host": "",
+    "port": 3306,
+    "username": "tbsg_user",
+    "password": "",
+    "database": "tbsg_database"
+  },
+  "api":
+  {
+	"host": "",
+	"username": "",
+	"password": "",
+	"tokenfile": ""
+  },
+  "assets": {
+    "cards": "./data/cards.xml",
+    "scripts": "./data/Scripts/",
+    "profiles": "./data/Profiles/",
+    "shaders": "",
+    "shaders_bin": "",
+    "textures": "",
+    "textures_bin": "",
+    "models": "",
+    "ui": "",
+    "audio": "",
+	"particles": "",
+    "maps": "./data/",
+    "aiconfig": "./data/AI/ai.json",
+    "balancingdata": "./data/BalancingData/"
+  },
+  "user": {
+    "name": "UserNamex64"
+  },
+  "window": {
+    "width": 1280,
+    "height": 720
+  },
+  "engineSubstepping": {
+    "maxsteptime": 0.0333,
+    "maxsteps": 6
+  }
+}

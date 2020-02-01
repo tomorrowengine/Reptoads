@@ -1,0 +1,873 @@
+{
+  "name": "GameDemo",
+  "elements": [
+      {
+          "name": "CardDeck",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 391.5,
+              "y": 0,
+              "depth": 0.2
+          },
+          "size": {
+              "width": 1137,
+              "height": 111
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "UI_card_holder_full.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": [
+              {
+                  "name": "CardDeckContainer",
+                  "tag": "PlayerCardBox",
+                  "script": "",
+                  "position": {
+                      "x": 224.8,
+                      "y": 1.3,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 693,
+                      "height": 248
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "UI_card_holder_bar.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": []
+              },
+              {
+                  "name": "DiscardText",
+                  "tag": "PlayerDeckText",
+                  "script": "",
+                  "position": {
+                      "x": 748.3,
+                      "y": -224.1,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 500,
+                      "height": 500
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "0",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": "DeckText",
+                  "tag": "PlayerDiscardText",
+                  "script": "",
+                  "position": {
+                      "x": -149.9,
+                      "y": -224.5,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 500,
+                      "height": 500
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "10",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              }
+          ]
+      },
+      {
+          "name": "OkButton",
+          "tag": "ConfirmButton",
+          "script": "",
+          "position": {
+              "x": 1614.8,
+              "y": 12.9,
+              "depth": 0
+          },
+          "size": {
+              "width": 277,
+              "height": 161
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "UI_play_button_normal.png",
+              "interactable": true,
+              "events": [
+                  {
+                      "type": "OnButtonReleased",
+                      "action": "submit_pressed",
+                      "data": "",
+                      "id": 0
+                  },
+                  {
+                      "id": 1,
+                      "type": "OnButtonPressed",
+                      "action": "playSound",
+                      "data": "click.wav"
+                  },
+                  {
+                      "id": 2,
+                      "type": "OnFocussed",
+                      "action": "setImage",
+                      "data": "UI_play_button_hovered.png"
+                  },
+                  {
+                      "id": 3,
+                      "type": "OnFocusLost",
+                      "action": "setImage",
+                      "data": "UI_play_button_normal.png"
+                  }
+              ]
+          }
+        },
+      {
+          "name": "PauseButton",
+          "tag": "PauseButton",
+          "script": "",
+          "position": {
+              "x": 50.0,
+              "y": 200.0,
+              "depth": 0
+          },
+          "size": {
+              "width": 113,
+              "height": 95
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "PauseButton.png",
+              "interactable": true,
+              "events": [
+                  {
+                      "type": "OnButtonReleased",
+                      "action": "",
+                      "data": "",
+                      "id": 0
+                  },
+                  {
+                      "id": 1,
+                      "type": "OnButtonPressed",
+                      "action": "playSound",
+                      "data": "click.wav"
+                  },
+                  {
+                      "id": 2,
+                      "type": "OnFocussed",
+                      "action": "setImage",
+                      "data": "PauseButton-Hovered.png"
+                  },
+                  {
+                      "id": 3,
+                      "type": "OnFocusLost",
+                      "action": "setImage",
+                      "data": "PauseButton.png"
+                  }
+              ]
+          },
+          "children": []
+      },
+      {
+          "name": "PlayerHealth",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 0,
+              "y": 770,
+              "depth": 0.1
+          },
+          "size": {
+              "width": 320,
+              "height": 317
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "UI_player1.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": [
+              {
+                  "name": "PlayerIcon",
+                  "tag": "PlayerIcon",
+                  "script": "",
+                  "position": {
+                      "x": 82.6,
+                      "y": 72.7,
+                      "depth": -0.1
+                  },
+                  "size": {
+                      "width": 180,
+                      "height": 180
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "UI_player1-Icon.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": []
+              },
+              {
+                  "name": "PlayerArmorText",
+                  "tag": "PlayerArmorText",
+                  "script": "",
+                  "position": {
+                      "x": 213.2,
+                      "y": 142.4,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 128,
+                      "height": 128
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "0",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": " PlayerNameText",
+                  "tag": "PlayerName",
+                  "script": "",
+                  "position": {
+                      "x": 78.1,
+                      "y": 26.1,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 500,
+                      "height": 500
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "Player 1",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 32,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": "PlayerHealthText",
+                  "tag": "PlayerHealthText",
+                  "script": "",
+                  "position": {
+                      "x": 208.1,
+                      "y": 36.3,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 100,
+                      "height": 100
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "40",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              }
+          ]
+      },
+      {
+          "name": "OpponentHealth",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 1601.3,
+              "y": 770.2,
+              "depth": 0.1
+          },
+          "size": {
+              "width": 320,
+              "height": 317
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "UI_player2.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": [
+              {
+                  "name": "OpponentIcon",
+                  "tag": "RivalIcon",
+                  "script": "",
+                  "position": {
+                      "x": 59.2,
+                      "y": 76.8,
+                      "depth": -0.1
+                  },
+                  "size": {
+                      "width": 180,
+                      "height": 180
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "UI_player2-icon.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": []
+              },
+              {
+                  "name": "OpponentArmorText",
+                  "tag": "RivalArmorText",
+                  "script": "",
+                  "position": {
+                      "x": -19.9,
+                      "y": 144.5,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 128,
+                      "height": 128
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "0",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": " OpponentNameText",
+                  "tag": "RivalName",
+                  "script": "",
+                  "position": {
+                      "x": -260.1,
+                      "y": 22.2,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 500,
+                      "height": 500
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "Player 2",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 32,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": "OpponentHealthText",
+                  "tag": "RivalHealthText",
+                  "script": "",
+                  "position": {
+                      "x": 11.6,
+                      "y": 35.3,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 100,
+                      "height": 100
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "40",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "interactable": false,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              }
+          ]
+      },
+      {
+          "name": "MonsterHealth",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 508,
+              "y": 882,
+              "depth": 0.1
+          },
+          "size": {
+              "width": 904,
+              "height": 200
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "UI_monster_HBempty.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": [
+              {
+                  "name": "MonsterIcon",
+                  "tag": "MonsterIcon",
+                  "script": "",
+                  "position": {
+                      "x": 371.6,
+                      "y": 67.2,
+                      "depth": -0.1
+                  },
+                  "size": {
+                      "width": 155,
+                      "height": 155
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "UI_monster-icon.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": []
+              },
+              {
+                  "name": "MonsterHealthBar",
+                  "tag": "MonsterHealthBar",
+                  "script": "",
+                  "position": {
+                      "x": 243.1,
+                      "y": 170.5,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 348,
+                      "height": 17
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "UI_health_bar.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": []
+              },
+              {
+                  "name": "Ui_Playertag",
+                  "tag": "PlayerFirstTag",
+                  "script": "",
+                  "position": {
+                      "x": 452.5,
+                      "y": 140,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 10,
+                      "height": 10
+                  },
+                  "rotation": 0,
+                  "type": "UIImage",
+                  "typable_data": {
+                      "image": "Transparent.png",
+                      "interactable": false,
+                      "events": []
+                  },
+                  "children": [
+                      {
+                          "name": "Ui_PlayertagVisual",
+                          "tag": "",
+                          "script": "",
+                          "position": {
+                              "x": -29.0,
+                              "y": -165.0,
+                              "depth": 0
+                          },
+                          "size": {
+                              "width": 58,
+                              "height": 86
+                          },
+                          "rotation": 0,
+                          "type": "UIImage",
+                          "typable_data": {
+                              "image": "UI_playertag.png",
+                              "interactable": false,
+                              "events": []
+                          },
+                          "children": []
+                      }
+                  ]
+              },
+              {
+                  "name": "Text",
+                  "tag": "MonsterHealthText",
+                  "script": "",
+                  "position": {
+                      "x": 563.7,
+                      "y": 156.7,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 128,
+                      "height": 40
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "40/40",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 25,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 1
+                      }
+                  },
+                  "children": []
+              },
+              {
+                  "name": "MonsterArmorText",
+                  "tag": "MonsterArmorText",
+                  "script": "",
+                  "position": {
+                      "x": -63.2,
+                      "y": 147,
+                      "depth": 0
+                  },
+                  "size": {
+                      "width": 535,
+                      "height": 35
+                  },
+                  "rotation": 0,
+                  "type": "UIText",
+                  "typable_data": {
+                      "text": "0",
+                      "horizontal_alignment": 1,
+                      "vertical_alignment": 1,
+                      "font_path": "Acme",
+                      "font_size": 40,
+                      "color": {
+                          "r": 1,
+                          "g": 1,
+                          "b": 1,
+                          "a": 255
+                      }
+                  },
+                  "children": []
+              }
+          ]
+      },
+      {
+          "name": "CardBackDiscrad",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 420.9,
+              "y": -62,
+              "depth": 0.01
+          },
+          "size": {
+              "width": 200,
+              "height": 200
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "CardBorder_Back.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": []
+      },
+      {
+          "name": "CardBackDraw1",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 1305.2,
+              "y": -59.9,
+              "depth": 0.01
+          },
+          "size": {
+              "width": 200,
+              "height": 200
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "CardBorder_Back.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": []
+      },
+      {
+          "name": "CardBackDraw2",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 1297.8,
+              "y": -82,
+              "depth": 0.01
+          },
+          "size": {
+              "width": 200,
+              "height": 200
+          },
+          "rotation": 0,
+          "type": "UIImage",
+          "typable_data": {
+              "image": "CardBorder_Back.png",
+              "interactable": false,
+              "events": []
+          },
+          "children": []
+      },
+      {
+          "name": "HandText",
+          "tag": "PlayerDeckText",
+          "script": "",
+          "position": {
+              "x": -110.2,
+              "y": 560.9,
+              "depth": 0.21
+          },
+          "size": {
+              "width": 500,
+              "height": 500
+          },
+          "rotation": 0,
+          "type": "UIText",
+          "typable_data": {
+              "text": "10",
+              "horizontal_alignment": 1,
+              "vertical_alignment": 1,
+              "font_path": "Acme",
+              "font_size": 40,
+              "interactable": false,
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1,
+                  "a": 255
+              }
+          },
+          "children": []
+      },
+      {
+          "name": "OpponentHandText",
+          "tag": "RivalDeckText",
+          "script": "",
+          "position": {
+              "x": 1530.8,
+              "y": 563.3,
+              "depth": 0.21
+          },
+          "size": {
+              "width": 500,
+              "height": 500
+          },
+          "rotation": 0,
+          "type": "UIText",
+          "typable_data": {
+              "text": "10",
+              "horizontal_alignment": 1,
+              "vertical_alignment": 1,
+              "font_path": "Acme",
+              "font_size": 40,
+              "interactable": false,
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1,
+                  "a": 255
+              }
+          },
+          "children": []
+      },
+      {
+          "name": "TimerText",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 1285.6,
+              "y": 805.2,
+              "depth": 0
+          },
+          "size": {
+              "width": 500,
+              "height": 500
+          },
+          "rotation": 0,
+          "type": "UIText",
+          "typable_data": {
+              "text": "",
+              "horizontal_alignment": 1,
+              "vertical_alignment": 1,
+              "font_path": "Indie Flower",
+              "font_size": 32,
+              "interactable": false,
+              "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0,
+                  "a": 1
+              }
+          },
+          "children": []
+      },
+      {
+          "name": "TimerText",
+          "tag": "TimerText",
+          "script": "",
+          "position": {
+              "x": -177.9,
+              "y": -197.2,
+              "depth": 0
+          },
+          "size": {
+              "width": 500,
+              "height": 500
+          },
+          "rotation": 0,
+          "type": "UIText",
+          "typable_data": {
+              "text": "40",
+              "horizontal_alignment": 1,
+              "vertical_alignment": 1,
+              "font_path": "Acme",
+              "font_size": 80,
+              "interactable": false,
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1,
+                  "a": 255
+              }
+          },
+          "children": []
+      },
+      {
+          "name": "RewardText",
+          "tag": "",
+          "script": "",
+          "position": {
+              "x": 964.8,
+              "y": 799.7,
+              "depth": 0
+          },
+          "size": {
+              "width": 500,
+              "height": 500
+          },
+          "rotation": 0,
+          "type": "UIText",
+          "typable_data": {
+              "text": "?",
+              "horizontal_alignment": 1,
+              "vertical_alignment": 1,
+              "font_path": "Acme",
+              "font_size": 40,
+              "interactable": false,
+              "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1,
+                  "a": 255
+              }
+          },
+          "children": []
+      }
+  ]
+}

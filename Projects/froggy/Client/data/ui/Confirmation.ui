@@ -1,0 +1,184 @@
+{
+    "name": "Confirmation",
+	"elements" : [
+		{
+			"name": "BackGround",
+
+			"position": {
+				"x" : 0.0,
+				"y" : 0.0
+			},
+			"size": {
+				"width" : 1920.0,
+				"height" : 1080.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "MenuBackGround.png",
+				"interactable": false,
+				"events": [
+					
+				]
+			},
+			"children": [
+				
+			]
+		},
+		{
+			"name": "Ready Button",
+
+			"position": {
+				"x" : 720.0,
+				"y" : 340.0
+			},
+			"size": {
+				"width" : 500.0,
+				"height" : 400.0
+			},
+			"rotation": 0.0,
+			"type": "UIImage",
+			"typable_data": {
+				"image": "UIMenuBox.png",
+				"interactable": false,
+				"events": [
+				
+				]
+			},
+			"children": [
+				{
+					"name": "OkButton",
+
+					"position": {
+						"x" : 260.0,
+						"y" : 15.0
+					},
+					"size": {
+						"width" : 180.0,
+						"height" : 85.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "UIOk.png",
+						"interactable": true,
+						"events": [
+							{
+								"type": "OnButtonReleased",
+								"action": "PlayerIsReadyToPlay",
+								"data": ""
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "loadUITop",
+								"data": "LoadingScreen.ui"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "unloadUI",
+								"data": "Confirmation.ui"
+							},
+							{
+								"type": "OnFocussed",
+								"action": "setImage",
+								"data": "UIOkHover.png"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "playSound",
+								"data": "click.wav"
+							},
+							{
+								"type": "OnFocusLost",
+								"action": "setImage",
+								"data": "UIOk.png"
+							}
+						]
+					},
+					"children": [
+					
+					]
+				},
+				{
+					"name": "CancelButton",
+
+					"position": {
+						"x" : 70.0,
+						"y" : 15.0
+					},
+					"size": {
+						"width" : 180.0,
+						"height" : 85.0
+					},
+					"rotation": 0.0,
+					"type": "UIImage",
+					"typable_data": {
+						"image": "UICancel.png",
+						"interactable": true,
+						"events": [
+							{
+								"type": "OnButtonReleased",
+								"action": "loadUITop",
+								"data": "MainMenu.ui"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "unloadUI",
+								"data": "Confirmation.ui"
+							},
+							{
+								"type": "OnButtonReleased",
+								"action": "playSound",
+								"data": "click.wav"
+							},
+							{
+								"type": "OnFocussed",
+								"action": "setImage",
+								"data": "UICancelHover.png"
+							},
+							{
+								"type": "OnFocusLost",
+								"action": "setImage",
+								"data": "UICancel.png"
+							}
+						]
+					},
+					"children": [
+					
+					]
+				},
+				{
+					"name": "MenuText1",
+
+					"position": {
+						"x" : 0.0,
+						"y" : 50.0
+					},
+					"size": {
+						"width" : 480.0,
+						"height" : 340.0
+					},
+					"rotation": 0.0,
+
+					"type": "UIText",
+					"typable_data": {
+						"text": "Ready to start a game?",
+						"font_path": "fonts/Arial.ttf",
+						"font_size": 30,
+						"horizontal_alignment": 1,
+						"vertical_alignment": 1,
+						"color": {
+							"r": 1.0,
+							"g": 1.0,
+							"b": 1.0,
+							"a": 1.0
+						}
+					},
+					"children": [
+					]
+				}
+			]
+		}
+		
+	]
+}
