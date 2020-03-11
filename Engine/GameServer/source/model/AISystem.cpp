@@ -25,8 +25,10 @@ typedef int errno_t;
 
 void tbsg::AISystem::Initialize(GameDataDatabase* gameDataModel, size_t amountOfPlaysToStore)
 {
+	// Load the utility formulas from the Json file
     LoadUtilityFormulas();
 
+	// Store a pointer to the gameDataModel so that we can easily access this later
     gameDataModelRef = gameDataModel;
     numberOfPlaysToStore = amountOfPlaysToStore;
 }
@@ -36,6 +38,7 @@ void tbsg::AISystem::RunBalancingTool(MatchData& matchData)
 	gameplay::ShuffleCards(matchData.playerDecks[0]);
 	gameplay::ShuffleCards(matchData.playerDecks[1]);
 
+	//If the hands are empty, we expect that this means we should use the default amount of cards
     if(matchData.playerHands[0].empty())
     {
         tbsg::gameplay::DrawCards(matchData.playerDecks[0], matchData.playerHands[0], 4);
@@ -45,15 +48,21 @@ void tbsg::AISystem::RunBalancingTool(MatchData& matchData)
         tbsg::gameplay::DrawCards(matchData.playerDecks[1], matchData.playerHands[1], 4);
     }
 
+	// Run the simulation with the given matchdata
     SimulateGame(matchData);
-    
 }
 
 unsigned tbsg::AISystem::RunGameAI(MatchData& matchData, unsigned int aiPlayerID)
 {
     unsigned int selectedCard = 0;
+
+	// Run the simulations for all the cards in that the player has and calculate their utility scores
     ptl::vector<PlayedCard> cardsAI = PickCards(matchData, aiPlayerID);
+
+	// Get the card with the highest utility score
     selectedCard = GetBestCard(cardsAI);
+
+	// The selected card should not be able to be none since the player always draws a card at the start of a turn
     if(selectedCard == 0)
     {
         cof::Error("No card was selected by the AI!");
@@ -67,7 +76,6 @@ unsigned tbsg::AISystem::RunGameAI(MatchData& matchData, unsigned int aiPlayerID
         }
         PrintDeck(matchData.playerDecks[aiPlayerID], "Deck");
         PrintDeck(matchData.playerDiscards[aiPlayerID], "Discard");
-        
     }
 
     return selectedCard;
@@ -75,24 +83,26 @@ unsigned tbsg::AISystem::RunGameAI(MatchData& matchData, unsigned int aiPlayerID
 
 void tbsg::AISystem::SimulateGame(MatchData& simulationMatchData)
 {
-	
     GameInfo gameInfo;
     scripting::LuaContext luaContext;
     luaContext.Initialize();
 
     int turnCounter = 0;
     
+	// Keep the game running as long at the match is not complete and the turn limit has not been reached.
     while(!simulationMatchData.isMatchDone && (turnCounter < 1000 || !limitTurnAmount))
     {
-
         ++turnCounter;
 		cof::Info("Turn {}", turnCounter);
         unsigned int firstCard = 0;
         unsigned int secondCard = 0;
 		
+		// Let both of the AIs simulate each card in their hands to calcuate the utility scores for them.
         ptl::vector<PlayedCard> cardsFirstAI = PickCards(simulationMatchData, 0);
         ptl::vector<PlayedCard> cardsSecondAI = PickCards(simulationMatchData, 1);
 
+		// If the AIs have health left, get the best card. Otherwise set create a temporary card with the name "No card selected", 
+		// this makes it clear in the data gathered that it did not pick a card
         if (simulationMatchData.heroes[0].health > 0)
         {
             firstCard = GetBestCard(cardsFirstAI);
@@ -121,15 +131,20 @@ void tbsg::AISystem::SimulateGame(MatchData& simulationMatchData)
             }
         }
 		
+		// Set the selected cards as the played cards in the match data and play out the turn
         simulationMatchData.playedCards = ptl::vector<unsigned int>{firstCard, secondCard};
         ResultOfRound result = gameplay::OnPlay(simulationMatchData, luaContext, gameDataModelRef);
 
+
+		// Collect the important data from the turn that played out and add it to the game info.
         ptl::vector<PlayerChanges> changes { 2 };
         GetChangeData(result, changes);
 
         TurnInfo turnInfo{ simulationMatchData, std::make_pair(cardsFirstAI, cardsSecondAI), changes};
         gameInfo.turnInfo.push_back(turnInfo);
     }
+
+	// Once the match is done, store all the gathered data in a Json file, clear the information gathered and deallocate the created luacontext
     StoreGatheredGameData(gameInfo);
     gameInfo.turnInfo.clear();
     luaContext.Deallocate();
@@ -137,32 +152,19 @@ void tbsg::AISystem::SimulateGame(MatchData& simulationMatchData)
 
 ptl::vector<tbsg::PlayedCard> tbsg::AISystem::PickCards(MatchData& simulationMatchData, unsigned int playerID)
 {
+	// Create the futures that will be used to run the simulations in
     ptl::vector<std::future<PlayedCard>> futures;
     ptl::vector<tbsg::PlayedCard> simulationResults;
 
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-	
-    
     assert(!simulationMatchData.playerHands[playerID].empty() && "Hand is empty should not be possible");
-
     
+	// Run an async simulation for each card in the hand of the player to calculate its utility score.
     for (auto& selectedCard : simulationMatchData.playerHands[playerID])
     {
 		futures.push_back(std::async(std::launch::async, [&] { return AISystem::SimulateTurn(simulationMatchData, playerID, selectedCard); }));
     }
     
+	// Wait for the simulationsto be done and get the results
     for (auto& currentFuture : futures)
     {
         if (!currentFuture.valid()) { continue; }
@@ -171,16 +173,19 @@ ptl::vector<tbsg::PlayedCard> tbsg::AISystem::PickCards(MatchData& simulationMat
     }
     futures.clear();
 
-	auto bestCards = GetTopCards(simulationResults, simulationMatchData);
+	// Get the cards with the highest utility scores
+	ptl::vector<PlayedCard> bestCards = GetTopCards(simulationResults, simulationMatchData);
     
     return bestCards;
 }
 
-
 tbsg::PlayedCard tbsg::AISystem::SimulateTurn(MatchData& simulationMatch, unsigned int playerID, unsigned int selectedCard)
 {
+	// Set up a dummy match, this has to be a copy since we just want to run some simulations on it without changing the actual match data
     MatchData dummyMatch = simulationMatch;
     PlayedCard cardInfo;
+
+	// Create a new lua context, we have to make a new one each time since we are running on multiple threads at the same time
     scripting::LuaContext luaContext;
 
     luaContext.Initialize();
@@ -188,6 +193,7 @@ tbsg::PlayedCard tbsg::AISystem::SimulateTurn(MatchData& simulationMatch, unsign
     dummyMatch.playedCards[playerID] = selectedCard;
     dummyMatch.playedCards[!playerID] = 0;
 
+	// Gather the data that we want to store
     if(selectedCard != 0)
     {
         cardInfo.selectedCard = *gameDataModelRef->GetCard(selectedCard);
@@ -206,6 +212,8 @@ tbsg::PlayedCard tbsg::AISystem::SimulateTurn(MatchData& simulationMatch, unsign
     GetChangeData(results, cardInfo.playerChanges);
     
     cardInfo.matchDataAfter = dummyMatch;
+
+	// Calculate the utility score for the played card based on the matchdata before and after
     cardInfo.utilityScore = CalculateUtility(dummyMatch, simulationMatch, playerID);
 
     luaContext.Deallocate();
@@ -215,14 +223,17 @@ tbsg::PlayedCard tbsg::AISystem::SimulateTurn(MatchData& simulationMatch, unsign
 ptl::vector<tbsg::PlayedCard> tbsg::AISystem::GetTopCards(ptl::vector<PlayedCard>& playedCards, MatchData& simulationMatchData)
 {
     ptl::vector<PlayedCard> topCards;
-    float lowestUtilityScore    = 1.f;
+    float lowestUtilityScore = 1.f;
 
     for (auto& currentCard : playedCards)
     {
+		// Check if the top cards already stores the desired amount of cards
         if (topCards.size() >= numberOfPlaysToStore)
         {
+			// Check if the current card has a higher utility score than the lowest one stored
             if (currentCard.utilityScore > lowestUtilityScore)
             {
+				// If the utility score is highre, search for the card that has the lower utility score and set that to the new card
                 for (auto& currentTopCard : topCards)
                 {
                     if (currentTopCard.utilityScore == lowestUtilityScore)
@@ -231,6 +242,8 @@ ptl::vector<tbsg::PlayedCard> tbsg::AISystem::GetTopCards(ptl::vector<PlayedCard
                         break;
                     }
                 }
+				
+				//Then loop over the new top cards and check what the new lowest score is
                 for (auto& currentTopCard : topCards)
                 {
                     lowestUtilityScore = 1.f;
@@ -243,7 +256,10 @@ ptl::vector<tbsg::PlayedCard> tbsg::AISystem::GetTopCards(ptl::vector<PlayedCard
         }
         else
         {
+			// Since we do not already store the desired amount of cards, we can just add the current one
             topCards.push_back(currentCard);
+
+			// See if this card has a lower utility score than the previous lowest
             if (currentCard.utilityScore < lowestUtilityScore)
             {
                 lowestUtilityScore = currentCard.utilityScore;
@@ -258,6 +274,7 @@ unsigned tbsg::AISystem::GetBestCard(ptl::vector<PlayedCard>& topCards)
     float highestUtilityScore = 0.f;
     PlayedCard* bestCard = nullptr;
 
+	// Look for the card with the highest utility score
     for(auto& currentCard : topCards)
     {
         if(currentCard.utilityScore >= highestUtilityScore)
@@ -266,6 +283,8 @@ unsigned tbsg::AISystem::GetBestCard(ptl::vector<PlayedCard>& topCards)
             bestCard = &currentCard;
         }
     }
+
+	// Set the best card to the card that was played and return the ID
     if(bestCard)
     {  
         bestCard->isCardPlayed = true;
@@ -277,225 +296,129 @@ unsigned tbsg::AISystem::GetBestCard(ptl::vector<PlayedCard>& topCards)
 
 float tbsg::AISystem::CalculateUtility(MatchData& matchDummy, MatchData& originalMatchData, unsigned int playerID)
 {
+	// Create a vector for the utility scores and reserve 5 spots since we expect that there will be at least 5 scores added
     ptl::vector<float> utilityScores;
     utilityScores.reserve(5);
     
+	// Add a base score of 0.5
     utilityScores.push_back(0.5f);
 
     const unsigned int opponentID = !playerID;
 
-
+	// If there was no card selected, add a bad score since in general not playing a card is bad
     if (matchDummy.playedCards[playerID] == 0)
     {
         utilityScores.push_back(0.0f);
         utilityScores.push_back(0.25f);
     }
-    if (matchDummy.playedCards[playerID] == 0)
-    {
-        utilityScores.push_back(0.0f);
-        utilityScores.push_back(0.25f);
-    }
-
     
-    
+	// Check the difference in health of the playing AI and add utility scores accordingly
     int statDifference = matchDummy.heroes[playerID].health - originalMatchData.heroes[playerID].health;
     if (statDifference != 0)
     {
+		// The entire goal of the game is to stay alive, so add a bunch of really bad utility scores if the AI died because of the card
         if (matchDummy.heroes[playerID].health <= 0)
         {
             utilityScores.emplace_back(0.f);
             utilityScores.emplace_back(0.f);
             utilityScores.emplace_back(0.f);
         }
-        statDifference += utilityFunctions[0].second * 0.5;
-        utilityScores.push_back(utilityFunctions[0].first(static_cast<float>(statDifference)));
+        statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Player_Health)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Player_Health)].first(static_cast<float>(statDifference)));
     }
-
     
-    
-    
-    
-    
-    
-    
-
-    
+	// Check the difference in armor of the playing AI and add utility scores accordingly
     statDifference = matchDummy.heroes[playerID].armor - originalMatchData.heroes[playerID].armor;
     if (statDifference != 0)
     {
-        statDifference += utilityFunctions[5].second * 0.5;
-        utilityScores.push_back(utilityFunctions[5].first(static_cast<float>(statDifference)));
+        statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Player_Armor)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Player_Armor)].first(static_cast<float>(statDifference)));
     }
 
-    
-    
-    
-    
-    
-    
-    
-
-    
+	// Check the difference in the cards in the hand of the playing AI and add utility scores accordingly
     size_t cardDifference = matchDummy.playerHands[playerID].size() - originalMatchData.playerHands[playerID].size();
     if (cardDifference != 0)
     {
-        cardDifference += utilityFunctions[10].second * 0.5;
-        utilityScores.push_back(utilityFunctions[10].first(static_cast<float>(cardDifference)));
+        cardDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Player_Hand)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Player_Hand)].first(static_cast<float>(cardDifference)));
     }
-
     
+	// Check the difference in the amount of cards in the deck of the playing AI and add utility scores accordingly
     cardDifference = matchDummy.playerDecks[playerID].size() - originalMatchData.playerDecks[playerID].size();
     if (cardDifference != 0)
     {
-        cardDifference += utilityFunctions[12].second * 0.5;
-        utilityScores.push_back(utilityFunctions[12].first(static_cast<float>(cardDifference)));
+        cardDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Player_Deck)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Player_Deck)].first(static_cast<float>(cardDifference)));
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+	// Check the difference in health of the opponent AI and add utility scores accordingly
     statDifference = matchDummy.heroes[opponentID].health - originalMatchData.heroes[opponentID].health;
     if (statDifference != 0)
     {
-        statDifference += utilityFunctions[1].second * 0.5;
-        utilityScores.push_back(utilityFunctions[1].first(static_cast<float>(statDifference)));
+        statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Health)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Health)].first(static_cast<float>(statDifference)));
     }
 
-    
-    
-    
-    
-    
-    
-    
-
-    
+	// Check the difference in armor of the opponent AI and add utility scores accordingly
     statDifference = matchDummy.heroes[opponentID].armor - originalMatchData.heroes[opponentID].armor;
     if (statDifference != 0)
     {
-        statDifference += utilityFunctions[6].second * 0.5;
-        utilityScores.push_back(utilityFunctions[6].first(static_cast<float>(statDifference)));
+        statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Armor)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Armor)].first(static_cast<float>(statDifference)));
     }
-
     
-    
-    
-    
-    
-    
-    
-
-    
+	// Check the difference in the cards in the hand of the opponent AI and add utility scores accordingly
     cardDifference = matchDummy.playerHands[opponentID].size() - originalMatchData.playerHands[opponentID].size();
     if (cardDifference != 0)
     {
-        cardDifference += utilityFunctions[11].second * 0.5;
-        utilityScores.push_back(utilityFunctions[11].first(static_cast<float>(cardDifference)));
+        cardDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Hand)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Hand].first(static_cast<float>(cardDifference)));
     }
 
-    
+	// Check the difference in the amount of cards in the deck of the opponent AI and add utility scores accordingly
     cardDifference = matchDummy.playerDecks[opponentID].size() - originalMatchData.playerDecks[opponentID].size();
     if (cardDifference != 0)
     {
-        cardDifference += utilityFunctions[13].second * 0.5;
-        utilityScores.push_back(utilityFunctions[13].first(static_cast<float>(cardDifference)));
+        cardDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Deck)].second * 0.5;
+        utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Opponent_Deck)].first(static_cast<float>(cardDifference)));
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
+	// Check if there are still monsters left to fight
     if(!matchDummy.monsterCards.empty())
     {
+		// See if a monster has died
         if(matchDummy.monsterCards.size() == originalMatchData.monsterCards.size())
         {
+			// Check the difference in the health of the monster and add utility scores accordingly
             statDifference = matchDummy.monsterCards[0].data.health - originalMatchData.monsterCards[0].data.health;
             if(statDifference != 0)
             {
-                statDifference += utilityFunctions[2].second * 0.5;
-                utilityScores.push_back(utilityFunctions[2].first(static_cast<float>(statDifference)));
+                statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Monster_Health].second * 0.5;
+                utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Monster_Health].first(static_cast<float>(statDifference)));
             }
 
+			// Check the armor of the monster and add utility scores accordingly
             statDifference = matchDummy.monsterCards[0].data.armor - originalMatchData.monsterCards[0].data.armor;
             if (statDifference != 0)
             {
-                statDifference += utilityFunctions[7].second * 0.5;
-                utilityScores.push_back(utilityFunctions[7].first(static_cast<float>(statDifference)));
+                statDifference += utilityFunctions[static_cast<int>(UtilityFunctions::Monster_Armor)].second * 0.5;
+                utilityScores.push_back(utilityFunctions[static_cast<int>(UtilityFunctions::Monster_Armor)].first(static_cast<float>(statDifference)));
             }
         }
         else
         {
+			// If the monster died, add a high utility score
             utilityScores.push_back(1.f);
         }
     }
 
+	// Return the average utilityscore
     return AddUtilityScores(utilityScores);
 }
 
 void tbsg::AISystem::LoadUtilityFormulas()
 {
+	// Open the json file that contains all the utility function setting
     rapidjson::GenericDocument< rapidjson::UTF8<>, rapidjson::MemoryPoolAllocator<> > aiDoc;
     char readBuffer[512];
 
@@ -532,19 +455,17 @@ void tbsg::AISystem::LoadUtilityFormulas()
                 bool shouldGraphFlip = HeroObject.value["Arguments"][0].GetBool();
                 float maxRange = HeroObject.value["Arguments"][1].GetFloat();
 
-                
+				// Add a lambda for a linear line formula to calculate the current variable (e.g. heal change)
                 const std::function<float(float)> function = 
-                    [maxRange, shouldGraphFlip]
+                [maxRange, shouldGraphFlip]
                 (float a_Variable) -> float
                 {
                     float utilityScore = a_Variable / maxRange;
 
-                    
                     if (utilityScore > 1.f)
                     {
                         utilityScore = 1.f;
                     }
-
                     
                     if (shouldGraphFlip)
                     {
@@ -568,9 +489,9 @@ void tbsg::AISystem::LoadUtilityFormulas()
                 float maxRange = HeroObject.value["Arguments"][1].GetFloat();
                 float steepness = HeroObject.value["Arguments"][2].GetFloat();
 
-                
+				// Add a lambda for a quadratic curve formula to calculate the current variable (e.g. heal change)
                 const std::function<float(float)> function = 
-                    [maxRange, shouldGraphFlip, steepness]
+                [maxRange, shouldGraphFlip, steepness]
                 (float a_Variable) -> float
                 {
                     float utilityScore = powf(a_Variable / maxRange, steepness);
@@ -604,15 +525,12 @@ void tbsg::AISystem::LoadUtilityFormulas()
                 float maxRange = HeroObject.value["Arguments"][1].GetFloat();
                 float steepness = HeroObject.value["Arguments"][2].GetFloat();
 
-                
+				// Add a lambda for a piecewise sigmoid curve formula to calculate the current variable (e.g. heal change)
                 const std::function<float(float)> function =
-                    [maxRange, shouldGraphFlip, steepness]
+                [maxRange, shouldGraphFlip, steepness]
                 (float a_Variable) -> float
                 {
                     float utilityScore = 1 / (1 + powf(steepness, -(a_Variable / maxRange * 12) + 6));
-
-                    
-
                     
                     if (utilityScore > 1.f)
                     {
@@ -650,22 +568,23 @@ void tbsg::AISystem::LoadUtilityFormulas()
                 float height5 = HeroObject.value["Arguments"][5].GetFloat();
                 float maxRange = HeroObject.value["Arguments"][6].GetFloat();
 
-                
+				// Add a lambda for a piecewise linear line formula to calculate the current variable (e.g. heal change)
+				// A pievewise linear function is the most customizable function that we support, the user can set 6 points between which a linear formula is used. 
                 const std::function<float(float)> function =
-                    [startingHeight, height1, height2, height3, height4, height5, maxRange]
+                [startingHeight, height1, height2, height3, height4, height5, maxRange]
                 (float a_Variable) -> float
                 {
                     float utilityScore = 0.f;
                     const float range = maxRange / 5;
 
-                    
-
+					// First segment
                     if (a_Variable < range)                     
                     {
                         float s = (height1 - startingHeight) / range;
 
                         utilityScore = s * a_Variable + startingHeight;
                     }
+					// Second segment
                     else if (a_Variable < range * 2)   
                     {
                         float s = (height2 - height1) / range;
@@ -673,6 +592,7 @@ void tbsg::AISystem::LoadUtilityFormulas()
 
                         utilityScore = s * x + height1;
                     }
+					// Third segment
                     else if (a_Variable < range * 3)            
                     {
                         float s = (height3 - height2) / range;
@@ -680,6 +600,7 @@ void tbsg::AISystem::LoadUtilityFormulas()
 
                         utilityScore = s * x + height2;
                     }
+					// Fourth segment
                     else if (a_Variable < range * 4)            
                     {
                         float s = (height4 - height3) / range;
@@ -687,6 +608,7 @@ void tbsg::AISystem::LoadUtilityFormulas()
 
                         utilityScore = s * x + height3;
                     }
+					// Fifth segment
                     else if (a_Variable <= maxRange)          
                     {
                         float s = (height5 - height4) / range;
@@ -694,12 +616,13 @@ void tbsg::AISystem::LoadUtilityFormulas()
 
                         utilityScore = s * x + height4;
                     }
+					// Out of range
                     else
                     {
                         utilityScore = 1.f;
                     }
 
-                    
+                    // Handle edge cases where the utility score is higher or lower than possible
                     if (utilityScore > 1.f)
                     {
                         utilityScore = height5;
@@ -717,7 +640,6 @@ void tbsg::AISystem::LoadUtilityFormulas()
             }
             default:
             {
-                
                 throw std::runtime_error(&"One of the selected graph types does not exist, selected graph type is:"[graphType]);
                 break;
             }
@@ -725,9 +647,9 @@ void tbsg::AISystem::LoadUtilityFormulas()
 
         }
     }
+	// Close the file
     fclose(fp);
 }
-
 
 float tbsg::AISystem::AddUtilityScores(ptl::vector<float>& utilityScores)
 {
@@ -735,6 +657,7 @@ float tbsg::AISystem::AddUtilityScores(ptl::vector<float>& utilityScores)
     int positiveScoreCounter    = 0;
     int negativeScoreCounter    = 0;
 
+	// Add up all the utilityscores and keep track of how many positive/negative effects there are
     for (float utilityScore : utilityScores)
     {
         sumUtilityScores += utilityScore;
@@ -749,13 +672,13 @@ float tbsg::AISystem::AddUtilityScores(ptl::vector<float>& utilityScores)
         }
     }
 
-    
-    
-    
+	// effectCountScore makes sure to add a positive score if there are overall more positive effects or a negative score if there are more negative effects
     const float effectCountScore = (positiveScoreCounter - negativeScoreCounter) / 100.f;
+
+	// Calculate the average score + the effectCountScore
     float result = sumUtilityScores / utilityScores.size() + effectCountScore;
 
-    
+    // Handle edge cases where the score is higher or lower than possible
     if(result > 1.f)
     {
         result = 1.f;
@@ -770,6 +693,7 @@ float tbsg::AISystem::AddUtilityScores(ptl::vector<float>& utilityScores)
 
 void tbsg::AISystem::PrintDeck(const ptl::vector<unsigned>& deck, const ptl::string& deckType)
 {
+	// A utility function that iterates through all the cards inthe deck and prints the names of the cards
     ptl::string gameInfo;
     for (auto& card : deck)
     {
@@ -818,18 +742,20 @@ void tbsg::AISystem::GetChangeData(const ResultOfRound& results, ptl::vector<Pla
     }
 }
 
+//////////////////////////////////////////////////////////////////////////////
+//	Everything below this point is for storing the matchdata in a Json file	//
+//////////////////////////////////////////////////////////////////////////////
+
 void tbsg::AISystem::StoreGatheredGameData(const GameInfo& gameInfo)
 {
     rapidjson::Document simulationDataDoc;
     simulationDataDoc.Parse("{}");
 
-    
     rapidjson::Value turnsArray;
     turnsArray.SetArray();
     turnsArray.Reserve(static_cast<rapidjson::SizeType>(gameInfo.turnInfo.size()), simulationDataDoc.GetAllocator());
     AddTurnDataToJson(simulationDataDoc, turnsArray, gameInfo.turnInfo);
 
-    
     simulationDataDoc.AddMember("seed", gameInfo.turnInfo.front().playedCards.first.front().matchDataBefore.seed, simulationDataDoc.GetAllocator());
     
     const int totalMonsterAmount  = gameInfo.turnInfo.front().playedCards.first.front().matchDataAfter.monsterCards.size();
@@ -895,12 +821,10 @@ void tbsg::AISystem::AddTurnDataToJson(rapidjson::Document& document, rapidjson:
         AddPlayerDataToJson(document, turnObject, turn.playerChanges[0], "player1changes");
         AddPlayerDataToJson(document, turnObject, turn.playerChanges[1], "player2changes");
 
-        
         rapidjson::Value playerOneBestCards;
         playerOneBestCards.SetArray();
         playerOneBestCards.Reserve(static_cast<rapidjson::SizeType>(turn.playedCards.first.size()), document.GetAllocator());
 
-        
         for (auto& currentCardInfo : turn.playedCards.first)
         {
             
@@ -924,20 +848,16 @@ void tbsg::AISystem::AddTurnDataToJson(rapidjson::Document& document, rapidjson:
 
         turnObject.AddMember("player1bestcards", playerOneBestCards, document.GetAllocator());
 
-        
-        
         rapidjson::Value playerTwoBestCards;
         playerTwoBestCards.SetArray();
         playerTwoBestCards.Reserve(static_cast<rapidjson::SizeType>(turn.playedCards.first.size()), document.GetAllocator());
 
         for (auto& currentCardInfo : turn.playedCards.second)
         {
-            
             rapidjson::Value cardObject;
             cardObject.SetObject();
             cardObject.MemberReserve(6, document.GetAllocator());
 
-            
             cardObject.AddMember("cardid", currentCardInfo.selectedCard.id, document.GetAllocator());
             cardObject.AddMember("cardname", rapidjson::StringRef(currentCardInfo.selectedCard.meta.name.c_str()), document.GetAllocator());
             cardObject.AddMember("utilityscore", currentCardInfo.utilityScore, document.GetAllocator());
@@ -958,12 +878,10 @@ void tbsg::AISystem::AddTurnDataToJson(rapidjson::Document& document, rapidjson:
 
 void tbsg::AISystem::AddMatchDataToJson(rapidjson::Document& document, rapidjson::Value& cardObject, const MatchData& matchData, ptl::string matchObjectName)
 {
-    
     rapidjson::Value matchObject;
     matchObject.SetObject();
     matchObject.MemberReserve(4, document.GetAllocator());
 
-    
     rapidjson::Value objectName(rapidjson::kStringType);
     objectName.SetString(matchObjectName.c_str(), strlen(matchObjectName.c_str()), document.GetAllocator());
 
@@ -989,17 +907,14 @@ void tbsg::AISystem::AddMatchDataToJson(rapidjson::Document& document, rapidjson
 
     matchObject.AddMember("monster", monsterData, document.GetAllocator());
 
-
     cardObject.AddMember(objectName, matchObject, document.GetAllocator());
 }
 
 void tbsg::AISystem::AddMatchDataToJson(rapidjson::Document& document, rapidjson::Value& cardObject, const MatchData& matchData, int playerIndex, ptl::string matchObjectName)
 {
-    
     rapidjson::Value matchObject;
     matchObject.SetObject();
     matchObject.MemberReserve(2, document.GetAllocator());
-
     
     rapidjson::Value objectName(rapidjson::kStringType);
     objectName.SetString(matchObjectName.c_str(), strlen(matchObjectName.c_str()), document.GetAllocator());
@@ -1016,22 +931,12 @@ void tbsg::AISystem::AddHeroDataToJson(rapidjson::Document& document, rapidjson:
     rapidjson::Value playerObject;
     playerObject.SetObject();
     playerObject.MemberReserve(9, document.GetAllocator());
-
     
     playerObject.AddMember("health",        matchData.heroes[playerIndex].health,           document.GetAllocator());
     playerObject.AddMember("armor",         matchData.heroes[playerIndex].armor,            document.GetAllocator());
     playerObject.AddMember("decksize",      matchData.playerDecks[playerIndex].size(),      document.GetAllocator());
     playerObject.AddMember("discardsize",   matchData.playerDiscards[playerIndex].size(),   document.GetAllocator());
     playerObject.AddMember("handsize",      matchData.playerHands[playerIndex].size(),      document.GetAllocator());
-
-    
-    
-    
-    
-    
-    
-    
-    
 
     rapidjson::Value objectName(rapidjson::kStringType);
     objectName.SetString(playerObjectName.c_str(), strlen(playerObjectName.c_str()), document.GetAllocator());
