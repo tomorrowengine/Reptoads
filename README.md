@@ -24,8 +24,6 @@ Please read the included [license](https://github.com/tomorrowengine/Reptoads/bl
 
 ## Programming Team
 
-## Programming Team
-
 - Simon		Renger - Team Lead
 - Dirk	de	Kok - Engine & Tools
 - Jesse		Roffel - Engine & Tools
