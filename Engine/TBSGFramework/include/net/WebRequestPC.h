@@ -7,22 +7,29 @@
 
 namespace tbsg
 {
-	class WebRequest
-	{
-	public:
-		WebRequest();
-		~WebRequest() = default;
 
-		tbsg::WebRequestResult RequestWebData(const ptl::string& webDomain, const ptl::string& webDirectoryURL, const tbsg::WebMethod method, const ptl::vector<tbsg::postDataPair> arguments = {});
-	private:
-		bool TestWebConnection(const ptl::string& webDomain, int websitePort = 443,  int timeoutTime = 0);
-		ptl::unique_ptr<httplib::SSLClient> requestor;
-		ptl::shared_ptr<httplib::Response> response;
+    // WebRequest class (Used to be pure virtual, moving towards excluding files instead)
+    // This class will do most of the HTTP requests towards the database or rest api.
+    class WebRequest
+    {
+    public:
+        WebRequest();
+        ~WebRequest() = default;
 
-		ptl::shared_ptr<httplib::Response> GetWebRequest(const ptl::string& webDirectoryURL, const ptl::string& argumentString, const tbsg::WebMethod& method);
+        // Main way to request data is using this exposed function which returns a struct that helps determine the result and info such status.
+        tbsg::WebRequestResult RequestWebData(const ptl::string& webDomain, const ptl::string& webDirectoryURL, const tbsg::WebMethod method, const ptl::vector<tbsg::postDataPair> arguments = {});
+    private:
+        // Local pointers to the httplib lib classes in order to do web requests without exposing this.
+        ptl::unique_ptr<httplib::SSLClient> requestor;
+        ptl::shared_ptr<httplib::Response> response;
 
-		int GetRequestStatus(const ptl::shared_ptr<httplib::Response>);
-		ptl::string GetRequestBody(const ptl::shared_ptr<httplib::Response>);
-		ptl::string ConvertArgumentsToString(const tbsg::WebMethod& method, const ptl::vector<tbsg::postDataPair>& arguments);
-	};
+        // Related to performing web requests themselves.
+        ptl::string GetRequestBody(const ptl::shared_ptr<httplib::Response>);
+        ptl::string ConvertArgumentsToString(const tbsg::WebMethod& method, const ptl::vector<tbsg::postDataPair>& arguments);
+
+        // Perform HTTP web requests
+        ptl::shared_ptr<httplib::Response> GetWebRequest(const ptl::string& webDirectoryURL, const ptl::string& argumentString, const tbsg::WebMethod& method);
+        bool TestWebConnection(const ptl::string& webDomain, int websitePort = 443, int timeoutTime = 0);
+        int GetRequestStatus(const ptl::shared_ptr<httplib::Response>);
+    };
 }
