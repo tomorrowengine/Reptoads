@@ -1,11 +1,28 @@
 # Reptoads
-A game project made in 8 weeks. This project is based on the tomorrow engine (inclueded) which also is a 8 week project for a turnd based card game engine. The game itself is determistic.
 
-This project is not functional at this point in time because important components are missing due to license reasons. We published this codebase that others can learn from it.
+"Reptoads: The Rogue-like multiplayer card game" is a student project produced using turn based strategy game engine: 'Tomorrow Engine' as it's foundation.
 
-**IMPORTANT**: See the [license](https://github.com/tomorrowengine/Reptoads/blob/master/LICENSE)
+The game itself is a strategy card game where you cooperate and race with a fellow adventurer towards the end, fighting monsters with cards provided from your deck, the game itself is deterministic in nature and was playable using local or online multi-player.
 
-## Team
+Due to licensing issues the project is not fully open source available within the project and major components are missing from the repository. A local network demo however is playable: 
+
+We published this codebase that others can learn from it.
+
+
+
+# Tomorrow Engine
+
+The Tomorrow Engine is a custom turn based strategy engine that is written in C++ and supported both PC and PS4 as target platforms. The engine went through three development phases: Concept phase, production phase and release phase. The result of the last phase was the production of the card game "Reptoads" as written above, which the engine used as target to extend and enhance the  functionality from the production phase.
+
+
+
+### Important note
+
+Please read the included [license](https://github.com/tomorrowengine/Reptoads/blob/master/LICENSE) file, Almost all comments from this and the Reptoads project have been stripped to avoid any mention of code or functionality that is under MDA.
+
+
+
+## Programming Team
 
 ## Programming Team
 
