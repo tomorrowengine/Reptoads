@@ -18,7 +18,7 @@ The Tomorrow Engine is a custom turn based strategy engine that is written in C+
 
 ### Important note
 
-Please read the included [license](https://github.com/tomorrowengine/Reptoads/blob/master/LICENSE) file, Almost all comments from this and the Reptoads project have been stripped to avoid any mention of code or functionality that is under MDA.
+Please read the included [license](https://github.com/tomorrowengine/Reptoads/blob/master/LICENSE) file, Almost all comments from this and the Reptoads project have been stripped to avoid any mention of code or functionality that is under NDA.
 
 
 
@@ -44,3 +44,8 @@ Please read the included [license](https://github.com/tomorrowengine/Reptoads/bl
 - Norbert	van	Hamond - General Design
 - Linda		Effinger - General Design
 - Loeck		Treure - UI / UX
+
+
+### Art Team
+
+Unanimously agreed and requested to remain uncredited as they felt unhappy with their deliveries and preferred to only have their highest quality work be found online.
